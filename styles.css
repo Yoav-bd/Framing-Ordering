@@ -1,0 +1,498 @@
+@font-face {
+    font-family: "SctoGroteskA";
+    font-weight: 700;
+    src: url('fonts/scto-grotesk-a-bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: "GretaText";
+    font-weight: 500;
+    src: url('fonts/greta-text-h-l-medium.woff2') format('woff2');
+}
+
+html, body {
+    font-family: "SctoGroteskA", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FCFAF5;
+    color: #000000;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+/* Add this new CSS rule */
+#title {
+    margin-left: -40px;
+}
+
+
+.header {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#menuButton, #languageButton {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #FCFAF5;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+
+
+#menuButton:active, #languageButton:active {
+    background-color: #111;
+}
+
+.reset-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#submitOrder {
+    flex: 0 1 80%; /* Flex-grow: 0, Flex-shrink: 1, Flex-basis: 70% */
+    padding: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #000;
+    color: #FCFAF5;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 2px solid #000; 
+}
+
+#submitOrder:hover {
+    background-color: #333;
+}
+
+#submitOrder:active {
+    background-color: #111;
+}
+
+#resetButton {
+    flex: 0 1 13%; /* Flex-grow: 0, Flex-shrink: 1, Flex-basis: 20% */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    border: 2px solid #000;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-left: 5%; /* Space between buttons */
+}
+
+.total-cost-label {
+    font-weight: bold;
+}
+
+body.rtl #resetButton {
+    margin-right: 5%; /* Space between buttons in RTL */
+    margin-left: 0; /* Remove left margin in RTL */
+    direction: rtl; /* Force LTR direction for button content */
+}
+
+#resetButton svg {
+    margin-left: 8px; /* Space between text and icon */
+    width: 18px; /* Adjust size as needed */
+    height: 21px; /* Adjust size as needed */
+}
+
+body.rtl #resetButton svg {
+    margin-right: 8px; /* Space between text and icon in RTL */
+}
+
+
+#resetButton:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+    color: #000;
+}
+
+#resetButton:active {
+    background-color: #dcdcdc; /* Darker gray background on click */
+}
+
+
+
+h1 {
+    font-size: 23px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 28px;
+    font-family: "GretaText";
+    font-weight: lighter;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Ensure even spacing between form groups */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Ensure even spacing */
+}
+
+.hidden-no-space {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important; /* Ensure the element takes up no vertical space */
+    overflow: hidden !important; /* Ensure no content is displayed */
+}
+
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select, input[type="number"] {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #000000;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "SctoGroteskA", sans-serif;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Default position */
+    background-color: #FCFAF5;
+}
+
+select {
+    background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><mask id="mask0_0_17" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect y="24" width="24" height="24" transform="rotate(-90 0 24)" fill="%23D9D9D9"/></mask><g mask="url(%23mask0_0_17)"><path d="M18 10L12 16L6 10L7.4 8.6L12 13.2L16.6 8.6L18 10Z" fill="%231C1B1F"/></g></svg>');
+}
+
+input[type="number"] {
+    background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><mask id="mask0_0_32" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="%23D9D9D9"/></mask><g mask="url(%23mask0_0_32)"><path d="M12 20.9996L7.5 16.4996L8.95 15.0496L12 18.0996L15.05 15.0496L16.5 16.4996L12 20.9996ZM8.95 9.04961L7.5 7.59961L12 3.09961L16.5 7.59961L15.05 9.04961L12 5.99961L8.95 9.04961Z" fill="%231C1B1F"/></g></svg>');
+}
+
+body.rtl select, body.rtl input[type="number"] {
+    background-position: left 10px center; /* Position for RTL */
+}
+
+input::placeholder {
+    color: #000; /* Set placeholder text color to black */
+}
+
+
+
+/* Add this CSS to your existing stylesheet */
+.input-wrapper input[type="number"] {
+    width: 94.5%;
+    padding: 15px;
+    border: 2px solid #000000;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "SctoGroteskA", sans-serif;
+    appearance: none;
+}
+
+
+option {
+    font-weight: bold;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group input[type="radio"] + label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    line-height: 20px;
+    display: flex;
+    align-items: center; /* Center vertically */
+    color: #000;
+    font-family: "SctoGroteskA", sans-serif;
+}
+
+.radio-group input[type="radio"] + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Adjust the size as needed */
+    border: 1px solid #000;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.radio-group:first-of-type input[type="radio"] + label {
+    margin-bottom: 15px; /* Add bottom margin to only the first radio button's label */
+}
+
+.radio-group input[type="radio"]:checked + label:before {
+    background: #fff;
+}
+
+.radio-group input[type="radio"]:checked + label:after {
+    content: "";
+    position: absolute;
+    left: 4px; /* Center the dot */
+    top: 50%;
+    transform: translateY(-50%); /* Center the dot vertically */
+    width: 14px; /* Size of the dot, adjust as needed */
+    height: 14px; /* Size of the dot, adjust as needed */
+    border-radius: 50%;
+    background: #000;
+}
+
+body.rtl .radio-group input[type="radio"] + label {
+    padding-left: 0;
+    padding-right: 35px;
+}
+
+body.rtl .radio-group input[type="radio"] + label:before {
+    left: auto;
+    right: 0;
+}
+
+body.rtl .radio-group input[type="radio"]:checked + label:after {
+    left: auto;
+    right: 4px;
+}
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-group input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-group input[type="checkbox"] + label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #000;
+    font-family: "SctoGroteskA", sans-serif;
+}
+
+.checkbox-group input[type="checkbox"] + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Adjust the size as needed */
+    border: 1px solid #000;
+    background: #fff;
+}
+
+.checkbox-group input[type="checkbox"]:checked + label:before {
+    background: #fff;
+}
+
+.checkbox-group input[type="checkbox"]:checked + label:after {
+    content: "";
+    position: absolute;
+    left: 4px; /* Adjust to center the check */
+    top: 4px; /* Adjust to center the check */
+    width: 14px; /* Adjust size as needed */
+    height: 14px; /* Adjust size as needed */
+    background: #000;
+}
+
+.checkbox-group:first-of-type input[type="checkbox"] + label {
+    margin-bottom: 15px; /* Add bottom margin to only the first checkbox */
+}
+body.rtl .checkbox-group input[type="checkbox"] + label {
+    padding-left: 0;
+    padding-right: 35px;
+}
+
+body.rtl .checkbox-group input[type="checkbox"] + label:before {
+    left: auto;
+    right: 0;
+}
+
+body.rtl .checkbox-group input[type="checkbox"]:checked + label:after {
+    left: auto;
+    right: 4px;
+}
+
+.summary {
+    margin-top: 30px;
+    background: #FCFAF5;
+}
+
+.summary h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.summary p {
+    margin: 10px 0;
+    color: #555;
+    font-size: 18px;
+}
+
+hr {
+    border: none;
+    border-top: 3px solid #000000; /* Makes the line bold and black */
+    margin: 20px 0; /* Adds some vertical spacing */
+}
+
+.total-cost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-cost p {
+    font-size: 16px;
+    color: black;
+}
+
+.summary-label {
+    font-weight: bold;
+    color: black;
+    font-size: 14px;
+    display: block; /* Ensure label is on a separate line */
+}
+
+.summary-value {
+    font-weight: normal;
+    color: grey;
+    font-size: 14px;
+    display: inline-block;
+    width: 70%; /* Adjust width to make space for price */
+}
+
+.summary-price {
+    font-weight: normal;
+    color: grey;
+    font-size: 12px;
+    text-align: right;
+    display: inline-block;
+    width: 30%; /* Align price to the right */
+}
+body.rtl .summary-price {
+    text-align: left;
+    order: -1;
+}
+
+
+
+.summary-line {
+    margin: 15px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.mountTypeOptions {
+    display: none;
+}
+
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.footnote {
+   font-size: 12px;
+   color: grey;
+   display: inline-block;
+   width: 500px;
+}
+
+.footnote a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footnote a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    #title {
+        display: none;
+    }
+}
+
+
+#customSizeFields {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#customSizeFields input {
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "SctoGroteskA", sans-serif;
+    appearance: none;
+    background-color: #FCFAF5;
+}
+
+#customSizeButton {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "SctoGroteskA", sans-serif;
+    background-color: #000;
+    color: #FCFAF5;
+    border: none;
+    cursor: pointer;
+}
+
+#customSizeButton:hover {
+    background-color: #333;
+}
