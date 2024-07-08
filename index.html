@@ -29,7 +29,7 @@
                     <option value="Print Only">Print Only</option>
                     <option value="Print + Mount">Print + Mount</option>
                     <option value="Print + Frame">Print + Frame</option>
-                    <option value="Frame Only">Frame Only</option> <!-- New Option -->
+                    <option value="Frame Only">Frame Only</option>
                 </select>
             </div>
 
@@ -63,18 +63,8 @@
                         <option value="Box Frame">Box Frame</option>
                         <option value="Floating Frame">Floating Frame</option>
                         <option value="Aluminium Frame">Aluminium Frame</option>
-                        <option value="No Glass Floating Frame">No Glass Floating Frame</option> <!-- New Option -->
-                        <option value="Light Box">Light Box</option> <!-- New Option -->
-                    </select>
-                </div>
-            </div>
-
-            <div id="frameSizeOptions" class="form-group hidden">
-                <div class="input-wrapper">
-                    <label for="frameSize" id="labelFrameSize" style="color:grey;">Frame Size</label>
-                    <select id="frameSize" name="frameSize">
-                        <option value="" disabled selected>Select a frame size</option>
-                        <!-- Options will be populated by JavaScript -->
+                        <option value="No Glass Floating Frame">No Glass Floating Frame</option>
+                        <option value="Light Box">Light Box</option>
                     </select>
                 </div>
             </div>
@@ -91,13 +81,14 @@
                     <option value="Diasec">Diasec</option>
                 </select>
             </div>
-
+            
             <div id="diasecTypeOptions" class="form-group hidden">
                 <label for="diasecType" id="labelDiasecType" style="color:grey;">Diasec</label>
                 <select id="diasecType" name="diasecType">
                     <option value="" disabled selected>Select a Diasec type</option>
                 </select>
             </div>
+            
 
             <div id="addonOptions" class="form-group hidden checkbox-group">
                 <label id="labelAddons">Add-ons:</label>
@@ -118,9 +109,9 @@
             <div class="total-cost">
                 <p><span class="total-cost-label">Total Cost:</span></p>
                 <p id="totalCost">0 NIS</p>
-            </div>
+            </div>            
         </div>
-
+        
         <div class="reset-container">
             <button id="submitOrder">Submit Order</button>
             <a id="resetButton" href="#">
@@ -130,7 +121,7 @@
                 </svg>
             </a>
         </div>
-
+        
         <div class="footnote">
             <p>Prices listed are for standard sizes. For custom sizes, please email us for a quote. <a href="mailto:info@theprinthouse.co.il">info@theprinthouse.co.il</a></p>
         </div>
