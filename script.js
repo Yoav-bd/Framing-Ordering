@@ -137,8 +137,9 @@ document.getElementById('printSize').addEventListener('change', () => {
 
 document.getElementById('mountType').addEventListener('change', () => {
     resetOptions('mountType');
+    const frameType = document.getElementById('frameType').value;
     const productType = document.getElementById('productType').value;
-    if (productType === 'Print + Frame') {
+    if (productType === 'Print + Frame' && frameType !== 'Floating Frame') {
         document.getElementById('addonOptions').classList.remove('hidden');
         document.getElementById('quantityOptions').classList.remove('hidden');
     }
@@ -507,7 +508,6 @@ function populateMountTypes() {
     const quantityOptions = document.getElementById('quantityOptions');
 
     mountTypeSelect.innerHTML = `<option value="" disabled selected>${document.documentElement.lang === 'he' ? 'בחר סוג תלייה' : 'Select a mount type'}</option>`;
-    
 
     if (productType === 'Print + Frame' && (frameType === 'Box Frame' || frameType === 'Floating Frame' || frameType === 'Aluminium Frame')) {
         const kapaPrices = kapaPriceTable[printSize];
@@ -535,9 +535,8 @@ function populateMountTypes() {
     addonOptions.classList.add('hidden'); // Ensure add-ons are hidden initially
     quantityOptions.classList.add('hidden'); // Ensure quantity options are hidden initially
 
-    // Add event listener to mountType to show quantity options for Print + Mount and Print + Frame only
     mountTypeSelect.addEventListener('change', () => {
-        if (productType === 'Print + Frame') {
+        if (productType === 'Print + Frame' && frameType !== 'Floating Frame') {
             addonOptions.classList.remove('hidden');
         }
         quantityOptions.classList.remove('hidden');
@@ -550,24 +549,17 @@ function populateMountTypes() {
 
 
 
-
-
-
-
-
-
-
-
 function showDiasecOptions() {
     const mountType = document.getElementById('mountType').value;
     const diasecTypeOptions = document.getElementById('diasecTypeOptions');
     const printSize = document.getElementById('printSize').value;
     const diasecTypeSelect = document.getElementById('diasecType');
     const paperTypeWrapper = document.getElementById('paperTypeOptions'); // Target the parent div for paper type
-
+    const addonOptions = document.getElementById('addonOptions');
+    const frameType = document.getElementById('frameType').value;
 
     if (mountType === 'Diasec') {
-        addonOptions.classList.add('hidden'); // Ensure add-ons are hidden initially
+        addonOptions.classList.add('hidden'); // Ensure add-ons are hidden for Diasec
 
         diasecTypeSelect.innerHTML = `<option value="" disabled selected>${document.documentElement.lang === 'he' ? 'בחר סוג דיאסק' : 'Select a Diasec type'}</option>`;
         for (const [type, price] of Object.entries(diasecPriceTable[printSize])) {
@@ -576,7 +568,6 @@ function showDiasecOptions() {
         diasecTypeOptions.classList.remove('hidden');
         paperTypeWrapper.classList.add('hidden-no-space'); // Hide paper type with no spacing
 
-        // Remove price text from print size options
         Array.from(document.getElementById('printSize').options).forEach(option => {
             if (option.value) {
                 option.textContent = option.value;
@@ -586,7 +577,6 @@ function showDiasecOptions() {
         diasecTypeOptions.classList.add('hidden');
         paperTypeWrapper.classList.remove('hidden-no-space'); // Show paper type with spacing
 
-        // Add price text back to print size options
         const paperType = document.getElementById('paperType').value;
         if (paperType) {
             for (const [size, price] of Object.entries(priceTable[paperType])) {
@@ -596,6 +586,10 @@ function showDiasecOptions() {
                 }
             }
         }
+    }
+
+    if (frameType === 'Floating Frame') {
+        addonOptions.classList.add('hidden'); // Hide add-ons for Floating Frame
     }
 
     updateSummary();
@@ -661,8 +655,6 @@ function showFrameOptions() {
     document.querySelectorAll('#frameDetails input[type="radio"]').forEach(option => {
         option.addEventListener('change', () => {
             mountOptions.classList.remove('hidden');
-            addonOptions.classList.remove('hidden');
-            quantityOptions.classList.remove('hidden');
             updateSummary();
             populateMountTypes();  // Ensure mount types are populated based on selected frame type
         });
