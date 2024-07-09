@@ -74,6 +74,32 @@ const aluminiumFramePriceTable = {
     '150x100': { 'Aluminium Profile': 1280, 'Aluminum Profile - Wood Veneer': 1430 }
 };
 
+const noGlassFloatingFramesPriceTable = {
+    '30x20': { 'Natural Wood or Painted': 430, 'Special Wood': 610 },
+    '40x30': { 'Natural Wood or Painted': 500, 'Special Wood': 730 },
+    '60x40': { 'Natural Wood or Painted': 600, 'Special Wood': 960 },
+    '70x50': { 'Natural Wood or Painted': 720, 'Special Wood': 1120 },
+    '90x60': { 'Natural Wood or Painted': 850, 'Special Wood': 1380 },
+    '100x70': { 'Natural Wood or Painted': 1050, 'Special Wood': 1560 },
+    '120x80': { 'Natural Wood or Painted': 1250, 'Special Wood': 1810 },
+    '130x90': { 'Natural Wood or Painted': 1450, 'Special Wood': 2060 },
+    '120x100': { 'Natural Wood or Painted': 1450, 'Special Wood': 2060 },
+    '150x100': { 'Natural Wood or Painted': 1580, 'Special Wood': 2190 }
+};
+
+const lightBoxPriceTable = {
+    '30x20': { 'Natural Wood or Painted': 800, 'Special Wood': 950 },
+    '40x30': { 'Natural Wood or Painted': 1200, 'Special Wood': 1400 },
+    '60x40': { 'Natural Wood or Painted': 1600, 'Special Wood': 1850 },
+    '70x50': { 'Natural Wood or Painted': 2000, 'Special Wood': 2300 },
+    '90x60': { 'Natural Wood or Painted': 2500, 'Special Wood': 2850 },
+    '100x70': { 'Natural Wood or Painted': 3000, 'Special Wood': 3400 },
+    '120x80': { 'Natural Wood or Painted': 4300, 'Special Wood': 4800 },
+    '130x90': { 'Natural Wood or Painted': 4900, 'Special Wood': 5500 },
+    '150x100': { 'Natural Wood or Painted': 6300, 'Special Wood': 7000 }
+};
+
+
 const addonPriceTable = {
     'Anti-Reflective Glass': { '30x20': 90, '40x30': 160, '60x40': 280, '70x50': 400, '90x60': 590, '100x70': 760, '120x80': 1040, '130x90': 1260, '120x100': 1260, '150x100': 1610 },
     'Passepartout': { '30x20': 50, '40x30': 70, '60x40': 120, '70x50': 160, '90x60': 250, '100x70': 330, '120x80': 400, '130x90': 480, '150x100': 620 },
@@ -84,12 +110,15 @@ const translations = {
     'Print Only': 'הדפסה בלבד',
     'Print + Mount': 'הדפסה + תלייה',
     'Print + Frame': 'הדפסה + מסגרת',
+    'Frame Only': 'מסגרת בלבד',
     'Fine Art Paper': 'נייר אמנות משובח',
     'Laminated Print': 'הדפסה למינציה',
     'Fine Art Cotton Paper': 'נייר כותנה אמנותי',
     'Box Frame': 'מסגרת קופסה',
     'Floating Frame': 'מסגרת צפה',
     'Aluminium Frame': 'מסגרת אלומיניום',
+    'No Glass Floating Frame': 'מסגרות צפות ללא זכוכית',
+    'Light Box': 'קופסאות תאורה',
     'KAPA White (Line)': 'קאפה לבן (Line)',
     'KAPA Grey (Fix)': 'קאפה אפור (Fix)',
     'Dibond': 'דיבונד',
@@ -101,8 +130,9 @@ const translations = {
     'Special Wood': 'עץ מיוחד',
     'Anti-Reflective Glass': 'זכוכית אנטי רפלקטיבית',
     'Museum-Quality Mat': 'שטיח באיכות מוזיאון',
-    'Passepartout': 'פספרטו'
+    'Passepartout': 'פספרטו',
 };
+
 
 document.getElementById('resetButton').addEventListener('click', () => {
     location.reload();
@@ -130,6 +160,9 @@ document.getElementById('printSize').addEventListener('change', () => {
         document.getElementById('mountOptions').classList.remove('hidden');
     } else if (productType === 'Print + Frame') {
         document.getElementById('frameOptions').classList.remove('hidden');
+    } else if(productType === 'Frame Only'){
+        document.getElementById('frameOptions').classList.remove('hidden');
+        populateFrameType();
     }
     populateMountTypes();
     updateSummary();
@@ -211,6 +244,10 @@ function resetOptions(changedElement) {
                 document.getElementById('mountOptions').classList.remove('hidden');
             } else if (productType === 'Print + Frame') {
                 document.getElementById('frameOptions').classList.remove('hidden');
+                populateFrameType();
+            } else if (productType === 'Frame Only') {
+                document.getElementById('frameOptions').classList.remove('hidden');
+                populateFrameType();
             }
             populateMountTypes();
             break;
@@ -226,6 +263,7 @@ function resetOptions(changedElement) {
             break;
     }
 }
+
 
 function toggleLanguage() {
     const currentLang = document.documentElement.lang;
@@ -252,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
         translateToHebrew();
     } else {
         document.body.classList.remove('rtl');
-        document.getElementById('languageButton').textContent = 'עברית';
+        document.getElementById('languageButton').textContent = 'עב';
         document.getElementById('menuButton').textContent = 'Menu';
         document.getElementById('resetButton').innerHTML = 'Reset <svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 21C7.75 21 6.57917 20.7625 5.4875 20.2875C4.39583 19.8125 3.44583 19.1708 2.6375 18.3625C1.82917 17.5542 1.1875 16.6042 0.7125 15.5125C0.2375 14.4208 0 13.25 0 12H2C2 13.95 2.67917 15.6042 4.0375 16.9625C5.39583 18.3208 7.05 19 9 19C10.95 19 12.6042 18.3208 13.9625 16.9625C15.3208 15.6042 16 13.95 16 12C16 10.05 15.3208 8.39583 13.9625 7.0375C12.6042 5.67917 10.95 5 9 5H8.85L10.4 6.55L9 8L5 4L9 0L10.4 1.45L8.85 3H9C10.25 3 11.4208 3.2375 12.5125 3.7125C13.6042 4.1875 14.5542 4.82917 15.3625 5.6375C16.1708 6.44583 16.8125 7.39583 17.2875 8.4875C17.7625 9.57917 18 10.75 18 12C18 13.25 17.7625 14.4208 17.2875 15.5125C16.8125 16.6042 16.1708 17.5542 15.3625 18.3625C14.5542 19.1708 13.6042 19.8125 12.5125 20.2875C11.4208 20.7625 10.25 21 9 21Z" fill="#1C1B1F"/></svg>';
         document.querySelector('.total-cost-label').textContent = 'Total Cost:';
@@ -321,6 +359,7 @@ function translateOptionsToHebrew() {
         <option value="Print Only">הדפסה בלבד</option>
         <option value="Print + Mount">הדפסה + תלייה</option>
         <option value="Print + Frame">הדפסה + מסגרת</option>
+        <option value="Frame Only">מסגרת בלבד</option>
     `;
 
     paperType.innerHTML = `
@@ -341,7 +380,6 @@ function translateOptionsToHebrew() {
         <option value="" disabled selected>סוג תלייה</option>
     `;
 
-    // Translate dynamically generated print sizes and mount types
     populatePrintSizes();
     populateMountTypes();
 }
@@ -377,6 +415,7 @@ function translateOptionsToEnglish() {
         <option value="Print Only">Print Only</option>
         <option value="Print + Mount">Print + Mount</option>
         <option value="Print + Frame">Print + Frame</option>
+        <option value="Frame Only">Frame Only</option>
     `;
 
     paperType.innerHTML = `
@@ -397,7 +436,6 @@ function translateOptionsToEnglish() {
         <option value="" disabled selected>Mount Type</option>
     `;
 
-    // Translate dynamically generated print sizes and mount types
     populatePrintSizes();
     populateMountTypes();
 }
@@ -441,15 +479,18 @@ function showOptions() {
     addonOptions.classList.add('hidden');
     diasecTypeOptions.classList.add('hidden');
     paperTypeWrapper.classList.remove('hidden-no-space'); // Reset paper type visibility
-    
+
     if (productType === 'Print Only') {
         paperTypeOptions.classList.remove('hidden');
     } else if (productType === 'Print + Mount') {
         paperTypeOptions.classList.remove('hidden');
     } else if (productType === 'Print + Frame') {
         paperTypeOptions.classList.remove('hidden');
+    } else if (productType === 'Frame Only') {
+        printSizeOptions.classList.remove('hidden')
+        populatePrintSizes();
     }
-
+ 
     updateSummary(); // Ensure summary is updated after product type selection
 }
 
@@ -458,41 +499,39 @@ function showOptions() {
 
 
 
+
+
 function populatePrintSizes() {
-    const paperType = document.getElementById('paperType').value;
     const productType = document.getElementById('productType').value;
-    const printSizeOptions = document.getElementById('printSizeOptions');
+    const paperType = document.getElementById('paperType').value;
     const printSizeSelect = document.getElementById('printSize');
     const lang = document.documentElement.lang;
 
     printSizeSelect.innerHTML = `<option value="" disabled selected>${lang === 'he' ? 'בחר גודל הדפסה' : 'Select a print size'}</option>`;
 
-    for (const [size, price] of Object.entries(priceTable[paperType])) {
-        const option = document.createElement('option');
-        option.value = size;
-        if (lang === 'he') {
-            option.textContent = `${price} ₪ - ${size}`;
-        } else {
-            option.textContent = `${size} - ${price} NIS`;
+    if (productType === 'Frame Only') {
+        for (const size in dibondNoBackFramePriceTable) {
+            const option = document.createElement('option');
+            option.value = size;
+            option.textContent = `${size}`;
+            printSizeSelect.appendChild(option);
         }
-        printSizeSelect.appendChild(option);
+    } else {
+        for (const [size, price] of Object.entries(priceTable[paperType])) {
+            const option = document.createElement('option');
+            option.value = size;
+            if (lang === 'he') {
+                option.textContent = `${price} ₪ - ${size}`;
+            } else {
+                option.textContent = `${size} - ${price} NIS`;
+            }
+            printSizeSelect.appendChild(option);
+        }
     }
-    printSizeOptions.classList.remove('hidden');
-
-    // Hide quantity options initially
-    document.getElementById('quantityOptions').classList.add('hidden');
-
-    // Add event listener to print size select to show quantity options for Print Only
-    printSizeSelect.addEventListener('change', () => {
-        if (productType === 'Print Only') {
-            document.getElementById('quantityOptions').classList.remove('hidden');
-        }
-        updateSummary();
-    });
-
-    // Call updateSummary to ensure the total price is updated
+    document.getElementById('printSizeOptions').classList.remove('hidden');
     updateSummary();
 }
+
 
 
 
@@ -598,6 +637,37 @@ function showDiasecOptions() {
 
 
 
+function populateFrameType() {
+    const productType = document.getElementById('productType').value;
+    const frameTypeSelect = document.getElementById('frameType');
+    const lang = document.documentElement.lang;
+
+    frameTypeSelect.innerHTML = `
+        <option value="" disabled selected>${lang === 'he' ? 'סוג מסגרת' : 'Frame Type'}</option>
+    `;
+
+    if (productType === 'Frame Only') {
+        frameTypeSelect.innerHTML += `
+            <option value="No Glass Floating Frame">${lang === 'he' ? translations['No Glass Floating Frame'] : 'No Glass Floating Frame'}</option>
+            <option value="Light Box">${lang === 'he' ? translations['Light Box'] : 'Light Box'}</option>
+        `;
+    } else if (productType === 'Print + Frame') {
+        frameTypeSelect.innerHTML += `
+            <option value="Box Frame">${lang === 'he' ? translations['Box Frame'] : 'Box Frame'}</option>
+            <option value="Floating Frame">${lang === 'he' ? translations['Floating Frame'] : 'Floating Frame'}</option>
+            <option value="Aluminium Frame">${lang === 'he' ? translations['Aluminium Frame'] : 'Aluminium Frame'}</option>
+        `;
+    }
+
+    frameTypeSelect.addEventListener('change', () => {
+        resetOptions('frameType');
+        showFrameOptions();
+        updateSummary();
+    });
+}
+
+
+
 
 function showFrameOptions() {
     const frameType = document.getElementById('frameType').value;
@@ -624,6 +694,10 @@ function showFrameOptions() {
         options = floatingFramePriceTable[printSize];
     } else if (frameType === 'Aluminium Frame') {
         options = aluminiumFramePriceTable[printSize];
+    } else if (frameType === 'No Glass Floating Frame') {
+        options = noGlassFloatingFramesPriceTable[printSize];
+    } else if (frameType === 'Light Box') {
+        options = lightBoxPriceTable[printSize];
     }
 
     if (options) {
@@ -637,7 +711,7 @@ function showFrameOptions() {
         }
     }
 
-    // Common add-on options for all frame types
+
     const antiReflectiveGlassPrice = addonPriceTable['Anti-Reflective Glass'][printSize];
     const passepartoutPrice = addonPriceTable['Passepartout'][printSize];
     addonOptions.innerHTML += `
@@ -651,12 +725,17 @@ function showFrameOptions() {
         </div>
     `;
 
+    
     // Add event listeners to dynamically added radio buttons
     document.querySelectorAll('#frameDetails input[type="radio"]').forEach(option => {
         option.addEventListener('change', () => {
-            mountOptions.classList.remove('hidden');
+            if (frameType !== 'No Glass Floating Frame' && frameType !== 'Light Box') {
+                mountOptions.classList.remove('hidden');
+                populateMountTypes();  // Ensure mount types are populated based on selected frame type
+            } else {
+                quantityOptions.classList.remove('hidden');
+            }
             updateSummary();
-            populateMountTypes();  // Ensure mount types are populated based on selected frame type
         });
     });
 
@@ -667,6 +746,9 @@ function showFrameOptions() {
 
     updateSummary();
 }
+
+
+
 
 
 
@@ -699,15 +781,15 @@ function updateSummary() {
 
         const labelSpan = document.createElement('span');
         labelSpan.className = 'summary-label';
-        labelSpan.textContent = label;
+        labelSpan.innerHTML = `<strong>${label}</strong>`;
 
         const valueSpan = document.createElement('span');
         valueSpan.className = 'summary-value';
-        valueSpan.textContent = value;
+        valueSpan.innerHTML = `<strong>${value}</strong>`;
 
         const priceSpan = document.createElement('span');
         priceSpan.className = 'summary-price';
-        priceSpan.textContent = price ? `${price * quantity} ${lang === 'he' ? '₪' : 'NIS'}` : '';
+        priceSpan.innerHTML = price ? `<strong>${price * quantity} ${lang === 'he' ? '₪' : 'NIS'}</strong>` : '';
 
         line.appendChild(labelSpan);
         line.appendChild(valueSpan);
@@ -778,6 +860,12 @@ function updateSummary() {
         } else if (mountType.startsWith('KAPA')) {
             totalCost += kapaPriceTable[printSize][mountType] * quantity;
         }
+    } else if (productType === 'Frame Only' && printSize) {
+        let frameCost = 0;
+        document.querySelectorAll('#frameDetails input[type="radio"]:checked').forEach(option => {
+            frameCost += parseInt(option.dataset.price);
+        });
+        totalCost = frameCost * quantity;
     }
 
     // Add quantity to summary only if quantityOptions is visible
@@ -788,7 +876,6 @@ function updateSummary() {
     // Update existing total cost element
     document.getElementById('totalCost').textContent = `${totalCost} ${lang === 'he' ? '₪' : 'NIS'}`;
 }
-
 
 
 
