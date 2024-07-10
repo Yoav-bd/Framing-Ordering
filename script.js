@@ -5,7 +5,7 @@ const priceTable = {
 };
 
 const dibondPriceTable = {
-    '30x20': 220, '40x30': 250, '60x40': 320, '70x50': 370, '90x60': 450, '100x70': 540, '120x80': 680, '130x90': 820, '120x100': 1000
+    '30x20': 220, '40x30': 250, '60x40': 320, '70x50': 370, '90x60': 450, '100x70': 540, '120x80': 680, '130x90': 820, '150x100': 1000
 };
 
 const dibondNoBackFramePriceTable = {
@@ -99,6 +99,30 @@ const lightBoxPriceTable = {
     '150x100': { 'Natural Wood or Painted': 6300, 'Special Wood': 7000 }
 };
 
+const stretcherFramePriceTable = {
+    '30x20': {'Stretcher frame + Stretching':185},
+    '40x30': {'Stretcher frame + Stretching':230},
+    '60x40': {'Stretcher frame + Stretching':280},
+    '70x50': {'Stretcher frame + Stretching':330},
+    '90x60': {'Stretcher frame + Stretching':400},
+    '100x70': {'Stretcher frame + Stretching':450},
+    '120x80': {'Stretcher frame + Stretching':500},
+    '130x90': {'Stretcher frame + Stretching':550},
+    '150x100': {'Stretcher frame + Stretching':700}
+};
+
+
+const boxFrameOriginalsPriceTable = {
+    '30x20': { 'Natural Wood or Painted': 490, 'Special Wood': 570 },
+    '40x30': { 'Natural Wood or Painted': 550, 'Special Wood': 645 },
+    '60x40': { 'Natural Wood or Painted': 715, 'Special Wood': 845 },
+    '70x50': { 'Natural Wood or Painted': 860, 'Special Wood': 1000 },
+    '90x60': { 'Natural Wood or Painted': 1100, 'Special Wood': 1280 },
+    '100x70': { 'Natural Wood or Painted': 1275, 'Special Wood': 1480 },
+    '120x80': { 'Natural Wood or Painted': 1550, 'Special Wood': 1795 },
+    '130x90': { 'Natural Wood or Painted': 1765, 'Special Wood': 2000 },
+    '150x100': { 'Natural Wood or Painted': 2090, 'Special Wood': 2380 }
+};
 
 const addonPriceTable = {
     'Anti-Reflective Glass': { '30x20': 90, '40x30': 160, '60x40': 280, '70x50': 400, '90x60': 590, '100x70': 760, '120x80': 1040, '130x90': 1260, '120x100': 1260, '150x100': 1610 },
@@ -131,7 +155,11 @@ const translations = {
     'Anti-Reflective Glass': 'זכוכית אנטי רפלקטיבית',
     'Museum-Quality Mat': 'שטיח באיכות מוזיאון',
     'Passepartout': 'פספרטו',
+    'Stretcher Frame': 'מסגרת מתיחה',
+    'Stretcher frame + Stretching':'מסגרת אלונקה + מתיחה',
+    'Box Frame for Originals on Paper': 'מסגור קופסא לעבודות נייר',
 };
+
 
 
 document.getElementById('resetButton').addEventListener('click', () => {
@@ -154,6 +182,7 @@ document.getElementById('paperType').addEventListener('change', () => {
 document.getElementById('printSize').addEventListener('change', () => {
     resetOptions('printSize');
     const productType = document.getElementById('productType').value;
+    
     if (productType === 'Print Only') {
         document.getElementById('quantityOptions').classList.remove('hidden');
     } else if (productType === 'Print + Mount') {
@@ -263,6 +292,7 @@ function resetOptions(changedElement) {
             break;
     }
 }
+
 
 
 function toggleLanguage() {
@@ -487,12 +517,13 @@ function showOptions() {
     } else if (productType === 'Print + Frame') {
         paperTypeOptions.classList.remove('hidden');
     } else if (productType === 'Frame Only') {
-        printSizeOptions.classList.remove('hidden')
+        printSizeOptions.classList.remove('hidden');
         populatePrintSizes();
     }
- 
+
     updateSummary(); // Ensure summary is updated after product type selection
 }
+
 
 
 
@@ -572,7 +603,7 @@ function populateMountTypes() {
     mountTypeSelect.classList.remove('hidden');
     diasecTypeOptions.classList.add('hidden');
     addonOptions.classList.add('hidden'); // Ensure add-ons are hidden initially
-    quantityOptions.classList.add('hidden'); // Ensure quantity options are hidden initially
+    
 
     mountTypeSelect.addEventListener('change', () => {
         if (productType === 'Print + Frame' && frameType !== 'Floating Frame') {
@@ -650,6 +681,8 @@ function populateFrameType() {
         frameTypeSelect.innerHTML += `
             <option value="No Glass Floating Frame">${lang === 'he' ? translations['No Glass Floating Frame'] : 'No Glass Floating Frame'}</option>
             <option value="Light Box">${lang === 'he' ? translations['Light Box'] : 'Light Box'}</option>
+            <option value="Stretcher Frame">${lang === 'he' ? translations['Stretcher Frame'] : 'Stretcher frame'}</option>
+            <option value="Box Frame for Originals on Paper">${lang === 'he' ? translations['Box Frame for Originals on Paper'] : 'Box Frame for Originals on Paper'}</option>
         `;
     } else if (productType === 'Print + Frame') {
         frameTypeSelect.innerHTML += `
@@ -665,6 +698,8 @@ function populateFrameType() {
         updateSummary();
     });
 }
+
+
 
 
 
@@ -698,6 +733,10 @@ function showFrameOptions() {
         options = noGlassFloatingFramesPriceTable[printSize];
     } else if (frameType === 'Light Box') {
         options = lightBoxPriceTable[printSize];
+    } else if (frameType === 'Stretcher Frame') {
+        options = stretcherFramePriceTable[printSize];
+    } else if (frameType === 'Box Frame for Originals on Paper') {
+        options = boxFrameOriginalsPriceTable[printSize];
     }
 
     if (options) {
@@ -710,7 +749,6 @@ function showFrameOptions() {
             `;
         }
     }
-
 
     const antiReflectiveGlassPrice = addonPriceTable['Anti-Reflective Glass'][printSize];
     const passepartoutPrice = addonPriceTable['Passepartout'][printSize];
@@ -725,11 +763,10 @@ function showFrameOptions() {
         </div>
     `;
 
-    
     // Add event listeners to dynamically added radio buttons
     document.querySelectorAll('#frameDetails input[type="radio"]').forEach(option => {
         option.addEventListener('change', () => {
-            if (frameType !== 'No Glass Floating Frame' && frameType !== 'Light Box') {
+            if (frameType !== 'No Glass Floating Frame' && frameType !== 'Light Box'  && frameType !== 'Stretcher Frame' && frameType !== 'Box Frame for Originals on Paper') {
                 mountOptions.classList.remove('hidden');
                 populateMountTypes();  // Ensure mount types are populated based on selected frame type
             } else {
@@ -746,6 +783,8 @@ function showFrameOptions() {
 
     updateSummary();
 }
+
+
 
 
 
@@ -806,8 +845,10 @@ function updateSummary() {
             let price = '';
             if (element.id === 'printSize' && paperType && (!mountType || mountType !== 'Diasec')) {
                 price = priceTable[paperType][printSize];
-            } else if (element.id === 'mountType' && mountType === 'Dibond' && printSize) {
+            } else if (element.id === 'mountType' && mountType === 'Dibond' && printSize && productType !== 'Print + Frame') {
                 price = dibondPriceTable[printSize];
+            } else if (element.id === 'mountType' && mountType === 'Dibond' && printSize && productType === 'Print + Frame') {
+                price = dibondNoBackFramePriceTable[printSize];
             } else if (element.id === 'mountType' && mountType.startsWith('KAPA') && printSize) {
                 price = kapaPriceTable[printSize][mountType];
             } else if (element.id === 'diasecType' && diasecType && printSize) {
@@ -823,15 +864,6 @@ function updateSummary() {
             }
             totalCost += price * quantity;
         }
-    });
-
-    // Handle upgrades separately to add them with the same structure but without price in value text
-    const upgrades = document.querySelectorAll('#addonOptions input[type="checkbox"]:checked');
-    upgrades.forEach(upgrade => {
-        const value = upgrade.nextElementSibling.textContent.split(' - ')[0]; // Get only the text part without price
-        const price = parseInt(upgrade.dataset.price);
-        createSummaryLine(lang === 'he' ? 'שדרוג' : 'Upgrade', value, price);
-        totalCost += price * quantity;
     });
 
     // Calculate total cost dynamically
@@ -852,11 +884,13 @@ function updateSummary() {
         });
 
         totalCost = priceTable[paperType][printSize] * quantity + frameCost * quantity;
-
+        if(mountType === 'Diasec' && !diasecType){
+            totalCost -= priceTable[paperType][printSize] * quantity;
+        }
         if (mountType === 'Diasec' && diasecType) {
-            totalCost += diasecPriceTable[printSize][diasecType] * quantity;
+            totalCost += diasecPriceTable[printSize][diasecType] * quantity -priceTable[paperType][printSize]  * quantity;
         } else if (mountType === 'Dibond') {
-            totalCost += dibondPriceTable[printSize] * quantity;
+            totalCost += dibondNoBackFramePriceTable[printSize] * quantity;
         } else if (mountType.startsWith('KAPA')) {
             totalCost += kapaPriceTable[printSize][mountType] * quantity;
         }
@@ -868,6 +902,15 @@ function updateSummary() {
         totalCost = frameCost * quantity;
     }
 
+    // Handle upgrades separately to add them with the same structure but without price in value text
+    const upgrades = document.querySelectorAll('#addonOptions input[type="checkbox"]:checked');
+    upgrades.forEach(upgrade => {
+        const value = upgrade.nextElementSibling.textContent.split(' - ')[0]; // Get only the text part without price
+        const price = parseInt(upgrade.dataset.price);
+        createSummaryLine(lang === 'he' ? 'שדרוג' : 'Upgrade', value, price);
+        totalCost += price * quantity;
+    });
+
     // Add quantity to summary only if quantityOptions is visible
     if (!document.getElementById('quantityOptions').classList.contains('hidden')) {
         createSummaryLine(lang === 'he' ? 'כמות' : 'Quantity', quantity, '');
@@ -876,6 +919,10 @@ function updateSummary() {
     // Update existing total cost element
     document.getElementById('totalCost').textContent = `${totalCost} ${lang === 'he' ? '₪' : 'NIS'}`;
 }
+
+// Call the function to update the summary initially
+updateSummary();
+
 
 
 
@@ -899,56 +946,177 @@ updateSummary();
 
 
 document.getElementById('submitOrder').addEventListener('click', () => {
-    const productType = document.getElementById('productType').value;
-    const paperType = document.getElementById('paperType').value;
-    const printSize = document.getElementById('printSize').value;
-    const quantity = parseInt(document.getElementById('quantity').value) || 1;
-    const totalCost = document.getElementById('totalCost').textContent.trim();
-
-    const personId = 45267780; // Replace with the correct person ID
-    const status = 'New'; // Ensure this matches one of the predefined status labels
-    const date = new Date().toISOString().split('T')[0]; // Current date in YYYY-MM-DD format
-
-    // Constructing the column values
-    const columnValues = {
-        person: { personsAndTeams: [{ id: personId, kind: "person" }] },
-        status: { label: status },
-        date4: { date: date },
-        text__1: productType, // Product
-        text8__1: paperType, // Paper Type
-        text3__1: printSize, // Size
-        text4__1: quantity.toString(), // Quantity
-        text45__1: totalCost // Total Price
-    };
-
-    const query = `
-        mutation {
-            create_item (board_id: 1555863012, item_name: "New Order", column_values: "${JSON.stringify(columnValues).replace(/"/g, '\\"')}") {
-                id
-            }
-        }
-    `;
-
-    fetch('https://api.monday.com/v2', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjM4MTA5NjcwMywiYWFpIjoxMSwidWlkIjo0NTI2Nzc4MCwiaWFkIjoiMjAyNC0wNy0wNlQxOTo1NTowOS42MzFaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTc2NTU5MDQsInJnbiI6ImV1YzEifQ.x-5ct2zcnpyBF8whDCdCsngqLtnE7WdOmIlAdXoyQE4'
-        },
-        body: JSON.stringify({ query })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Order submitted:', data);
-        // Optionally, display a confirmation message to the user
-    })
-    .catch(error => {
-        console.error('Error submitting order:', error);
-        // Optionally, display an error message to the user
-    });
+    
 });
 
+document.getElementById('submitOrder').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent form submission
+    document.getElementById('popupForm').style.display = 'block';
+});
 
+// Get the <span> element that closes the popup
+var closeBtn = document.querySelector('.close');
+
+// When the user clicks on <span> (x), close the popup
+closeBtn.onclick = function() {
+    document.getElementById('popupForm').style.display = 'none';
+}
+
+// When the user clicks anywhere outside of the popup, close it
+window.onclick = function(event) {
+    if (event.target == document.getElementById('popupForm')) {
+        document.getElementById('popupForm').style.display = 'none';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const popupFormContent = document.querySelector('.popup-content form');
+    
+    // Clear existing content if any
+    popupFormContent.innerHTML = '';
+
+    // Create and append new form elements with title
+    const formElements = `
+        <h2>${document.documentElement.lang === 'he' ? 'טופס יצירת קשר' : 'Contact Form'}</h2>
+        <input type="text" id="firstName" name="firstName" placeholder="${document.documentElement.lang === 'he' ? 'שם פרטי*' : 'First Name*'}" required>
+        <input type="text" id="lastName" name="lastName" placeholder="${document.documentElement.lang === 'he' ? 'שם משפחה*' : 'Last Name*'}" required>
+        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="${document.documentElement.lang === 'he' ? 'מספר טלפון*' : 'Phone Number*'}" required>
+        <input type="email" id="email" name="email" placeholder="${document.documentElement.lang === 'he' ? 'אימייל*' : 'Email*'}" required>
+        <input type="text" id="additionalInfo" name="additionalInfo" placeholder="${document.documentElement.lang === 'he' ? 'משהו נוסף שצריך שנדע?' : 'Anything else we should know?'}">
+            <div class="upload-container">
+                <input type="file" id="imageUpload" name="imageUpload" accept="image/*" class="upload-input">
+                <label for="imageUpload" class="upload-box">
+                    <span>${document.documentElement.lang === 'he' ? 'לצרף קבצים' : 'Upload File'}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 1 0v2.6h13V9.9a.5.5 0 0 1 1 0v2.6A1.5 1.5 0 0 1 14.5 14H1.5a1.5 1.5 0 0 1-1-2.5v-2.6z"/>
+                        <path d="M5.646 4.854a.5.5 0 0 1 .708 0L8 6.5l1.646-1.646a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 0-.708z"/>
+                        <path d="M8 6.5V1a.5.5 0 0 1 1 0v5.5H8z"/>
+                    </svg>
+                </label>
+            </div>
+        <button id="popup-submit" type="submit">${document.documentElement.lang === 'he' ? 'לשלוח' : 'Send'}</button>
+    `;
+
+    popupFormContent.innerHTML = formElements;
+
+    // Handle form submission
+    popupFormContent.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+    
+        // Get form data
+        const formData = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            phoneNumber: document.getElementById('phoneNumber').value,
+            email: document.getElementById('email').value,
+            additionalInfo: document.getElementById('additionalInfo').value
+        };
+    
+        const productType = document.getElementById('productType').value;
+        const paperType = document.getElementById('paperType').value;
+        const printSize = document.getElementById('printSize').value;
+        const quantity = parseInt(document.getElementById('quantity').value) || 1;
+        const totalCost = parseFloat(document.getElementById('totalCost').textContent.replace(/[^\d.-]/g, ''));
+        const mountType = document.getElementById('mountType').value;
+        const diasecType = document.getElementById('diasecType').value;
+        const frameType = document.getElementById('frameType').value;
+        const addons = Array.from(document.querySelectorAll('#addonOptions input[type="checkbox"]:checked')).map(cb => cb.value);
+    
+        const personId = 3529854; // Replace with the correct person ID
+        const status = 'New'; // Ensure this matches one of the predefined status labels
+    
+        // Constructing the column values
+        const columnValues = {
+            label__1: { label: productType }, // Product Type
+            status: { label: status }, // Lead status
+            person: { personsAndTeams: [{ id: personId, kind: "person" }] }, // Person
+            numbers__1: totalCost, // Estimated Value
+            numbers6__1: quantity, // Estimated QTY
+            date4: { date: new Date().toISOString().split('T')[0] }, // Lead Creation Date
+            email__1: { email: formData.email, text: formData.email }, // Email
+            phone__1: formData.phoneNumber // Phone
+        };
+    
+        // Generate summary
+        let summary = `Original Lead Summary:\n`;
+        summary += "\n";
+        if (formData.firstName) summary += `-First Name: ${formData.firstName}\n`;
+        if (formData.lastName) summary += `-Last Name: ${formData.lastName}\n`;
+        if (formData.phoneNumber) summary += `-Phone Number: ${formData.phoneNumber}\n`;
+        if (formData.email) summary += `-Email: ${formData.email}\n`;
+        summary += "\n";
+        if (productType) summary += `-Product Type: ${productType}\n`;
+        if (paperType) summary += `-Paper Type: ${paperType}\n`;
+        if (printSize) summary += `-Print Size: ${printSize}\n`;
+        if (mountType) summary += `-Mount Type: ${mountType}\n`;
+        if (diasecType) summary += `-Diasec Type: ${diasecType}\n`;
+        if (frameType) summary += `-Frame Type: ${frameType}\n`;
+        if (addons.length > 0) summary += `-Add-ons: ${addons.join(', ')}\n`;
+        summary += "\n";
+        if (quantity) summary += `-Quantity: ${quantity}\n`;
+        if (totalCost) summary += `-Estimated Lead Value: ${totalCost} NIS\n`;
+        summary += "\n";
+        if (formData.additionalInfo) summary += `-Additional Info: ${formData.additionalInfo}\n`;
+    
+        // Construct the GraphQL query
+        const query = `
+            mutation {
+                create_item (board_id: 6996556596, item_name: "${formData.firstName} ${formData.lastName}", column_values: "${JSON.stringify(columnValues).replace(/"/g, '\\"')}") {
+                    id
+                }
+            }
+        `;
+    
+        fetch('http://localhost:3000/proxy', { // Replace with the address of your proxy server
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ query })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const itemId = data.data.create_item.id;
+    
+            // Now add the update to the created item
+            const updateQuery = `
+                mutation {
+                    create_update (item_id: ${itemId}, body: "${summary.replace(/\n/g, '\\n').replace(/"/g, '\\"')}") {
+                        id
+                    }
+                }
+            `;
+    
+            return fetch('http://localhost:3000/proxy', { // Replace with the address of your proxy server
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: updateQuery })
+            });
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Update added:', data);
+            // Optionally, display a confirmation message to the user
+        })
+        .catch(error => {
+            console.error('Error submitting order:', error);
+            // Optionally, display an error message to the user
+        });
+    
+        // Close the popup
+        document.getElementById('popupForm').style.display = 'none';
+    });
+    
+    
+
+    
+    
+    
+    
+    
+});
 
 
 
