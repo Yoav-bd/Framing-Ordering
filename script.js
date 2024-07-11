@@ -1005,6 +1005,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </label>
         </div>
         <button id="popup-submit" type="submit">${document.documentElement.lang === 'he' ? 'לשלוח' : 'Send'}</button>
+        <div id="confirmationMessage" style="display:none;">${document.documentElement.lang === 'he' ? 'נשלח!' : 'Sent!'}</div>
     `;
 
     popupFormContent.innerHTML = formElements;
@@ -1122,8 +1123,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Optionally, display an error message to the user
         });
     
-        // Close the popup
-        document.getElementById('popupForm').style.display = 'none';
     });
 });
 
