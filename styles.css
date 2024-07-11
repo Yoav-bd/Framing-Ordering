@@ -54,6 +54,7 @@ html, body {
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    color: #000000; /* Ensure text color is black */
 }
 
 
@@ -194,6 +195,7 @@ select, input[type="number"] {
     background-repeat: no-repeat;
     background-position: right 10px center; /* Default position */
     background-color: #FCFAF5;
+    color: #000000;
 }
 
 select {
