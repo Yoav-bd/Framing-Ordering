@@ -682,7 +682,7 @@ function populateFrameType() {
         frameTypeSelect.innerHTML += `
             <option value="No Glass Floating Frame">${lang === 'he' ? translations['No Glass Floating Frame'] : 'No Glass Floating Frame'}</option>
             <option value="Light Box">${lang === 'he' ? translations['Light Box'] : 'Light Box'}</option>
-            <option value="Stretcher Frame">${lang === 'he' ? translations['Stretcher Frame'] : 'Stretcher frame'}</option>
+            <option value="Stretcher Frame">${lang === 'he' ? translations['Stretcher Frame'] : 'Stretcher Frame'}</option>
             <option value="Box Frame for Originals on Paper">${lang === 'he' ? translations['Box Frame for Originals on Paper'] : 'Box Frame for Originals on Paper'}</option>
         `;
     } else if (productType === 'Print + Frame') {
