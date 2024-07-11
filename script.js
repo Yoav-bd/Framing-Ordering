@@ -1116,11 +1116,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             console.log('Update added:', data);
-            // Optionally, display a confirmation message to the user
+            alert("Sent!");
+            popupFormContent.innerHTML = '';
+            popupFormContent.innerHTML = formElements;
         })
         .catch(error => {
             console.error('Error submitting order:', error);
-            // Optionally, display an error message to the user
+            alert("error:" + error );
         });
     
     });
