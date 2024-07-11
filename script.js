@@ -977,6 +977,8 @@ window.onclick = function(event) {
     }
 }
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const popupFormContent = document.querySelector('.popup-content form');
     
@@ -991,17 +993,17 @@ document.addEventListener('DOMContentLoaded', () => {
         <input type="text" id="phoneNumber" name="phoneNumber" placeholder="${document.documentElement.lang === 'he' ? 'מספר טלפון*' : 'Phone Number*'}" required>
         <input type="email" id="email" name="email" placeholder="${document.documentElement.lang === 'he' ? 'אימייל*' : 'Email*'}" required>
         <input type="text" id="additionalInfo" name="additionalInfo" placeholder="${document.documentElement.lang === 'he' ? 'משהו נוסף שצריך שנדע?' : 'Anything else we should know?'}">
-            <div class="upload-container">
-                <input type="file" id="imageUpload" name="imageUpload" accept="image/*" class="upload-input">
-                <label for="imageUpload" class="upload-box">
-                    <span>${document.documentElement.lang === 'he' ? 'לצרף קבצים' : 'Upload File'}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                        <path d="M.5 9.9a.5.5 0 0 1 1 0v2.6h13V9.9a.5.5 0 0 1 1 0v2.6A1.5 1.5 0 0 1 14.5 14H1.5a1.5 1.5 0 0 1-1-2.5v-2.6z"/>
-                        <path d="M5.646 4.854a.5.5 0 0 1 .708 0L8 6.5l1.646-1.646a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 0-.708z"/>
-                        <path d="M8 6.5V1a.5.5 0 0 1 1 0v5.5H8z"/>
-                    </svg>
-                </label>
-            </div>
+        <div class="upload-container">
+            <input type="file" id="imageUpload" name="imageUpload" accept="image/*" class="upload-input" multiple>
+            <label for="imageUpload" class="upload-box">
+                <span>${document.documentElement.lang === 'he' ? 'לצרף קבצים' : 'Upload Files'}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 1 0v2.6h13V9.9a.5.5 0 0 1 1 0v2.6A1.5 1.5 0 0 1 14.5 14H1.5a1.5 1.5 0 0 1-1-2.5v-2.6z"/>
+                    <path d="M5.646 4.854a.5.5 0 0 1 .708 0L8 6.5l1.646-1.646a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 0-.708z"/>
+                    <path d="M8 6.5V1a.5.5 0 0 1 1 0v5.5H8z"/>
+                </svg>
+            </label>
+        </div>
         <button id="popup-submit" type="submit">${document.documentElement.lang === 'he' ? 'לשלוח' : 'Send'}</button>
     `;
 
@@ -1066,7 +1068,7 @@ document.addEventListener('DOMContentLoaded', () => {
         summary += "\n";
         if (formData.additionalInfo) summary += `-Additional Info: ${formData.additionalInfo}\n`;
     
-        // Construct the GraphQL query
+        // Construct the GraphQL query for creating the item
         const query = `
             mutation {
                 create_item (board_id: 6996556596, item_name: "${formData.firstName} ${formData.lastName}", column_values: "${JSON.stringify(columnValues).replace(/"/g, '\\"')}") {
@@ -1075,10 +1077,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         `;
     
-        fetch('http://localhost:3000/proxy', { // Replace with the address of your proxy server
+        // Define the Monday API endpoint and your API key
+        const mondayApiUrl = 'https://api.monday.com/v2';
+        const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjM4MTEzNjM0OSwiYWFpIjoxMSwidWlkIjo2MTI1MzU0MCwiaWFkIjoiMjAyNC0wNy0wN1QwNzowNjoyNi4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTU5NjkyNCwicmduIjoidXNlMSJ9.tSTtRMuZt05ZCBDTVg5H289Esi7JtUZe1IxJXbdgMrM'; // Replace with your actual Monday API key
+    
+        // Send the request to create the item
+        fetch(mondayApiUrl, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': apiKey
             },
             body: JSON.stringify({ query })
         })
@@ -1095,10 +1103,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             `;
     
-            return fetch('http://localhost:3000/proxy', { // Replace with the address of your proxy server
+            return fetch(mondayApiUrl, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': apiKey
                 },
                 body: JSON.stringify({ query: updateQuery })
             });
@@ -1116,16 +1125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Close the popup
         document.getElementById('popupForm').style.display = 'none';
     });
-    
-    
-
-    
-    
-    
-    
-    
 });
-
 
 
 
