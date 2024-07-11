@@ -371,7 +371,7 @@ function translateToHebrew() {
     document.getElementById('labelAddons').textContent = 'תוספות';
     document.getElementById('labelQuantity').textContent = 'כמות:';
     document.getElementById('summaryTitle').textContent = 'סיכום';
-    document.getElementById('submitOrder').textContent = 'שלח הזמנה';
+    document.getElementById('submitOrder').textContent = 'צור קשר';
     document.querySelector('.footnote p').innerHTML = 'המחירים המפורטים הם עבור גדלים סטנדרטיים. לקבלת הצעת מחיר עבור גדלים מותאמים אישית, אנא שלחו לנו דוא"ל. <a href="mailto:info@theprinthouse.co.il">info@theprinthouse.co.il</a>';
     translateOptionsToHebrew();
     translateDynamicContentToHebrew(); // Ensure dynamic content is translated
@@ -426,7 +426,7 @@ function translateToEnglish() {
     document.getElementById('labelAddons').textContent = 'Add-ons:';
     document.getElementById('labelQuantity').textContent = 'Quantity';
     document.getElementById('summaryTitle').textContent = 'Summary';
-    document.getElementById('submitOrder').textContent = 'Submit Order';
+    document.getElementById('submitOrder').textContent = 'Contact Us';
     document.querySelector('.footnote p').innerHTML = 'Prices listed are for standard sizes. For custom sizes, please email us for a quote. <a href="mailto:info@theprinthouse.co.il">info@theprinthouse.co.il</a>';
     translateOptionsToEnglish();
     translateDynamicContentToEnglish(); // Ensure dynamic content is translated
