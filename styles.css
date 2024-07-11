@@ -539,7 +539,7 @@ body.rtl .summary-price {
 
 .popup-content input[type="text"], 
 .popup-content input[type="email"], 
-.popup-content input[type="tel"] {
+.popup-content input[type="number"] {
     border: none;
     border-bottom: 2px solid grey; /* Adds the underline */
     outline: none;
@@ -551,10 +551,13 @@ body.rtl .summary-price {
     background-color: #FCFAF5;
     font-family: "GretaText";
     font-weight: lighter;
-    
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
 }
 .popup-content input[type="text"]::placeholder,
-.popup-content input[type="email"]::placeholder
+.popup-content input[type="email"]::placeholder,
+.popup-content input[type="number"]::placeholder
 {
     font-weight: lighter;
     color: grey;
