@@ -126,7 +126,8 @@ const boxFrameOriginalsPriceTable = {
 
 const addonPriceTable = {
     'Anti-Reflective Glass': { '30x20': 90, '40x30': 160, '60x40': 280, '70x50': 400, '90x60': 590, '100x70': 760, '120x80': 1040, '130x90': 1260, '120x100': 1260, '150x100': 1610 },
-    'Passepartout': { '30x20': 50, '40x30': 70, '60x40': 120, '70x50': 160, '90x60': 250, '100x70': 330, '120x80': 400, '130x90': 480, '150x100': 620 },
+    'Passepartout Box': { '30x20': 0, '40x30': 0, '60x40': 0, '70x50': 0, '90x60': 50, '100x70': 80, '120x80': 120, '130x90': 220, '150x100': 330 },
+    'Passepartout Aluminum': { '30x20': 50, '40x30': 70, '60x40': 120, '70x50': 160, '90x60': 250, '100x70': 330, '120x80': 400, '130x90': 480, '150x100': 620 },
     'Museum-Quality Mat': { '30x20': 0, '40x30': 0, '60x40': 0, '70x50': 0, '90x60': 50, '100x70': 80, '120x80': 160, '130x90': 220, '120x100': 220, '150x100': 330 }
 };
 
@@ -749,9 +750,16 @@ function showFrameOptions() {
             `;
         }
     }
-
-    const antiReflectiveGlassPrice = addonPriceTable['Anti-Reflective Glass'][printSize];
-    const passepartoutPrice = addonPriceTable['Passepartout'][printSize];
+    var antiReflectiveGlassPrice;
+    var passepartoutPrice;
+    if(frameType === 'Box Frame'){
+        antiReflectiveGlassPrice = addonPriceTable['Anti-Reflective Glass'][printSize];
+        passepartoutPrice = addonPriceTable['Passepartout Box'][printSize];
+    }else if(frameType === 'Aluminium Frame'){
+        antiReflectiveGlassPrice = addonPriceTable['Anti-Reflective Glass'][printSize];
+        passepartoutPrice = addonPriceTable['Passepartout Aluminum'][printSize];
+    }
+    
     addonOptions.innerHTML += `
         <div class="checkbox-group">
             <input type="checkbox" id="addonAntiReflectiveGlass" name="addonOption" value="Anti-Reflective Glass" data-price="${antiReflectiveGlassPrice}">
