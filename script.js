@@ -985,7 +985,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Create and append new form elements with title
     const formElements = `
-        <h2>${document.documentElement.lang === 'he' ? 'טופס יצירת קשר' : 'Contact Form'}</h2>
+        <h2>${document.documentElement.lang === 'he' ? 'צור קשר להצאת מחיר' : 'Contact Us For a Quote'}</h2>
         <input type="text" id="firstName" name="firstName" placeholder="${document.documentElement.lang === 'he' ? 'שם פרטי*' : 'First Name*'}" required>
         <input type="text" id="lastName" name="lastName" placeholder="${document.documentElement.lang === 'he' ? 'שם משפחה*' : 'Last Name*'}" required>
         <input type="text" id="phoneNumber" name="phoneNumber" placeholder="${document.documentElement.lang === 'he' ? 'מספר טלפון*' : 'Phone Number*'}" required>
