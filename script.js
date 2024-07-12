@@ -1122,7 +1122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('Error submitting order:', error);
-            alert("error:" + error );
+            alert("error please try again later");
         });
     
     });
