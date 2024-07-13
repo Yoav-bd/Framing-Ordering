@@ -37,29 +37,29 @@ const kapaPriceTable = {
 };
 
 const boxFramePriceTable = {
-    '30x20': { 'Natural Wood or Painted': 400, 'Special Wood': 500 },
-    '40x30': { 'Natural Wood or Painted': 450, 'Special Wood': 560 },
-    '60x40': { 'Natural Wood or Painted': 590, 'Special Wood': 740 },
-    '70x50': { 'Natural Wood or Painted': 720, 'Special Wood': 900 },
-    '90x60': { 'Natural Wood or Painted': 850, 'Special Wood': 1110 },
-    '100x70': { 'Natural Wood or Painted': 980, 'Special Wood': 1350 },
-    '120x80': { 'Natural Wood or Painted': 1150, 'Special Wood': 1570 },
-    '130x90': { 'Natural Wood or Painted': 1450, 'Special Wood': 1860 },
-    '120x100': { 'Natural Wood or Painted': 1580, 'Special Wood': 2000 },
-    '150x100': { 'Natural Wood or Painted': 1800, 'Special Wood': 2350 }
+    '30x20': { 'Natural Wood or Painted': 400, 'Luxurious Wood': 500 },
+    '40x30': { 'Natural Wood or Painted': 450, 'Luxurious Wood': 560 },
+    '60x40': { 'Natural Wood or Painted': 590, 'Luxurious Wood': 740 },
+    '70x50': { 'Natural Wood or Painted': 720, 'Luxurious Wood': 900 },
+    '90x60': { 'Natural Wood or Painted': 850, 'Luxurious Wood': 1110 },
+    '100x70': { 'Natural Wood or Painted': 980, 'Luxurious Wood': 1350 },
+    '120x80': { 'Natural Wood or Painted': 1150, 'Luxurious Wood': 1570 },
+    '130x90': { 'Natural Wood or Painted': 1450, 'Luxurious Wood': 1860 },
+    '120x100': { 'Natural Wood or Painted': 1580, 'Luxurious Wood': 2000 },
+    '150x100': { 'Natural Wood or Painted': 1800, 'Luxurious Wood': 2350 }
 };
 
 const floatingFramePriceTable = {
-    '30x20': { 'Natural Wood or Painted': 350, 'Special Wood': 460 },
-    '40x30': { 'Natural Wood or Painted': 400, 'Special Wood': 530 },
-    '60x40': { 'Natural Wood or Painted': 500, 'Special Wood': 690 },
-    '70x50': { 'Natural Wood or Painted': 620, 'Special Wood': 810 },
-    '90x60': { 'Natural Wood or Painted': 730, 'Special Wood': 980 },
-    '100x70': { 'Natural Wood or Painted': 830, 'Special Wood': 1110 },
-    '120x80': { 'Natural Wood or Painted': 950, 'Special Wood': 1300 },
-    '130x90': { 'Natural Wood or Painted': 1150, 'Special Wood': 1540 },
-    '120x100': { 'Natural Wood or Painted': 1150, 'Special Wood': 1540 },
-    '150x100': { 'Natural Wood or Painted': 1300, 'Special Wood': 1730 }
+    '30x20': { 'Natural Wood or Painted': 350, 'Luxurious Wood': 460 },
+    '40x30': { 'Natural Wood or Painted': 400, 'Luxurious Wood': 530 },
+    '60x40': { 'Natural Wood or Painted': 500, 'Luxurious Wood': 690 },
+    '70x50': { 'Natural Wood or Painted': 620, 'Luxurious Wood': 810 },
+    '90x60': { 'Natural Wood or Painted': 730, 'Luxurious Wood': 980 },
+    '100x70': { 'Natural Wood or Painted': 830, 'Luxurious Wood': 1110 },
+    '120x80': { 'Natural Wood or Painted': 950, 'Luxurious Wood': 1300 },
+    '130x90': { 'Natural Wood or Painted': 1150, 'Luxurious Wood': 1540 },
+    '120x100': { 'Natural Wood or Painted': 1150, 'Luxurious Wood': 1540 },
+    '150x100': { 'Natural Wood or Painted': 1300, 'Luxurious Wood': 1730 }
 };
 
 const aluminiumFramePriceTable = {
@@ -75,28 +75,28 @@ const aluminiumFramePriceTable = {
 };
 
 const noGlassFloatingFramesPriceTable = {
-    '30x20': { 'Natural Wood or Painted': 430, 'Special Wood': 610 },
-    '40x30': { 'Natural Wood or Painted': 500, 'Special Wood': 730 },
-    '60x40': { 'Natural Wood or Painted': 600, 'Special Wood': 960 },
-    '70x50': { 'Natural Wood or Painted': 720, 'Special Wood': 1120 },
-    '90x60': { 'Natural Wood or Painted': 850, 'Special Wood': 1380 },
-    '100x70': { 'Natural Wood or Painted': 1050, 'Special Wood': 1560 },
-    '120x80': { 'Natural Wood or Painted': 1250, 'Special Wood': 1810 },
-    '130x90': { 'Natural Wood or Painted': 1450, 'Special Wood': 2060 },
-    '120x100': { 'Natural Wood or Painted': 1450, 'Special Wood': 2060 },
-    '150x100': { 'Natural Wood or Painted': 1580, 'Special Wood': 2190 }
+    '30x20': { 'Natural Wood or Painted': 430, 'Luxurious Wood': 610 },
+    '40x30': { 'Natural Wood or Painted': 500, 'Luxurious Wood': 730 },
+    '60x40': { 'Natural Wood or Painted': 600, 'Luxurious Wood': 960 },
+    '70x50': { 'Natural Wood or Painted': 720, 'Luxurious Wood': 1120 },
+    '90x60': { 'Natural Wood or Painted': 850, 'Luxurious Wood': 1380 },
+    '100x70': { 'Natural Wood or Painted': 1050, 'Luxurious Wood': 1560 },
+    '120x80': { 'Natural Wood or Painted': 1250, 'Luxurious Wood': 1810 },
+    '130x90': { 'Natural Wood or Painted': 1450, 'Luxurious Wood': 2060 },
+    '120x100': { 'Natural Wood or Painted': 1450, 'Luxurious Wood': 2060 },
+    '150x100': { 'Natural Wood or Painted': 1580, 'Luxurious Wood': 2190 }
 };
 
 const lightBoxPriceTable = {
-    '30x20': { 'Natural Wood or Painted': 800, 'Special Wood': 950 },
-    '40x30': { 'Natural Wood or Painted': 1200, 'Special Wood': 1400 },
-    '60x40': { 'Natural Wood or Painted': 1600, 'Special Wood': 1850 },
-    '70x50': { 'Natural Wood or Painted': 2000, 'Special Wood': 2300 },
-    '90x60': { 'Natural Wood or Painted': 2500, 'Special Wood': 2850 },
-    '100x70': { 'Natural Wood or Painted': 3000, 'Special Wood': 3400 },
-    '120x80': { 'Natural Wood or Painted': 4300, 'Special Wood': 4800 },
-    '130x90': { 'Natural Wood or Painted': 4900, 'Special Wood': 5500 },
-    '150x100': { 'Natural Wood or Painted': 6300, 'Special Wood': 7000 }
+    '30x20': { 'Natural Wood or Painted': 800, 'Luxurious Wood': 950 },
+    '40x30': { 'Natural Wood or Painted': 1200, 'Luxurious Wood': 1400 },
+    '60x40': { 'Natural Wood or Painted': 1600, 'Luxurious Wood': 1850 },
+    '70x50': { 'Natural Wood or Painted': 2000, 'Luxurious Wood': 2300 },
+    '90x60': { 'Natural Wood or Painted': 2500, 'Luxurious Wood': 2850 },
+    '100x70': { 'Natural Wood or Painted': 3000, 'Luxurious Wood': 3400 },
+    '120x80': { 'Natural Wood or Painted': 4300, 'Luxurious Wood': 4800 },
+    '130x90': { 'Natural Wood or Painted': 4900, 'Luxurious Wood': 5500 },
+    '150x100': { 'Natural Wood or Painted': 6300, 'Luxurious Wood': 7000 }
 };
 
 const stretcherFramePriceTable = {
@@ -113,15 +113,15 @@ const stretcherFramePriceTable = {
 
 
 const boxFrameOriginalsPriceTable = {
-    '30x20': { 'Natural Wood or Painted': 490, 'Special Wood': 570 },
-    '40x30': { 'Natural Wood or Painted': 550, 'Special Wood': 645 },
-    '60x40': { 'Natural Wood or Painted': 715, 'Special Wood': 845 },
-    '70x50': { 'Natural Wood or Painted': 860, 'Special Wood': 1000 },
-    '90x60': { 'Natural Wood or Painted': 1100, 'Special Wood': 1280 },
-    '100x70': { 'Natural Wood or Painted': 1275, 'Special Wood': 1480 },
-    '120x80': { 'Natural Wood or Painted': 1550, 'Special Wood': 1795 },
-    '130x90': { 'Natural Wood or Painted': 1765, 'Special Wood': 2000 },
-    '150x100': { 'Natural Wood or Painted': 2090, 'Special Wood': 2380 }
+    '30x20': { 'Natural Wood or Painted': 490, 'Luxurious Wood': 570 },
+    '40x30': { 'Natural Wood or Painted': 550, 'Luxurious Wood': 645 },
+    '60x40': { 'Natural Wood or Painted': 715, 'Luxurious Wood': 845 },
+    '70x50': { 'Natural Wood or Painted': 860, 'Luxurious Wood': 1000 },
+    '90x60': { 'Natural Wood or Painted': 1100, 'Luxurious Wood': 1280 },
+    '100x70': { 'Natural Wood or Painted': 1275, 'Luxurious Wood': 1480 },
+    '120x80': { 'Natural Wood or Painted': 1550, 'Luxurious Wood': 1795 },
+    '130x90': { 'Natural Wood or Painted': 1765, 'Luxurious Wood': 2000 },
+    '150x100': { 'Natural Wood or Painted': 2090, 'Luxurious Wood': 2380 }
 };
 
 const addonPriceTable = {
@@ -133,17 +133,17 @@ const addonPriceTable = {
 
 const translations = {
     'Print Only': 'הדפסה בלבד',
-    'Print + Mount': 'הדפסה + תלייה',
-    'Print + Frame': 'הדפסה + מסגרת',
-    'Frame Only': 'מסגרת בלבד',
-    'Fine Art Paper': 'נייר אמנות משובח',
-    'Laminated Print': 'הדפסה למינציה',
-    'Fine Art Cotton Paper': 'נייר כותנה אמנותי',
-    'Box Frame': 'מסגרת קופסה',
-    'Floating Frame': 'מסגרת צפה',
-    'Aluminium Frame': 'מסגרת אלומיניום',
-    'No Glass Floating Frame': 'מסגרות צפות ללא זכוכית',
-    'Light Box': 'קופסאות תאורה',
+    'Print + Mount': 'הדפסה + הדבקה',
+    'Print + Frame': 'הדפסה + מסגור',
+    'Frame Only': 'מסגור בלבד',
+    'Fine Art Paper': 'נייר פיין ארט',
+    'Laminated Print': 'הדפסה עם למינציה',
+    'Fine Art Cotton Paper': 'נייר פיין ארט 100% כותנה',
+    'Box Frame': 'מסגור קופסא',
+    'Floating Frame': 'מסגור צף',
+    'Aluminium Frame': 'מסגור אלומיניום',
+    'Floating Frame For Paintings': 'מסגור צף לציורים',
+    'Light Box': 'קופסאת אור',
     'KAPA White (Line)': 'קאפה לבן (Line)',
     'KAPA Grey (Fix)': 'קאפה אפור (Fix)',
     'Dibond': 'דיבונד',
@@ -152,13 +152,15 @@ const translations = {
     'Matt': 'מט',
     'TruLife': 'TruLife',
     'Natural Wood or Painted': 'עץ טבעי או צבוע',
-    'Special Wood': 'עץ מיוחד',
+    'Luxurious Wood': 'עץ יוקרתי',
     'Anti-Reflective Glass': 'זכוכית אנטי רפלקטיבית',
     'Museum-Quality Mat': 'שטיח באיכות מוזיאון',
-    'Passepartout': 'פספרטו',
+    'Acid Free Passpartout': 'פספרטו נטול חומצה',
     'Stretcher Frame': 'מסגרת מתיחה',
     'Stretcher frame + Stretching':'מסגרת אלונקה + מתיחה',
-    'Box Frame for Originals on Paper': 'מסגור קופסא לעבודות נייר',
+    'Box Frame for Originals': 'מסגור קופסא לעבודות מקוריות',
+    'Aluminium Profile':'פרופיל אלומיניום',
+    'Aluminum Profile - Wood Veneer': 'פרופיל אלומיניום מצופה עץ'
 };
 
 
@@ -258,6 +260,9 @@ function resetOptions(changedElement) {
         });
     }
 
+    // Ensure paper type visibility is reset
+    document.getElementById('paperTypeOptions').classList.remove('hidden-no-space');
+    
     switch (changedElement) {
         case 'productType':
             showOptions();
@@ -293,6 +298,7 @@ function resetOptions(changedElement) {
             break;
     }
 }
+
 
 
 
@@ -388,27 +394,27 @@ function translateOptionsToHebrew() {
     productType.innerHTML = `
         <option value="" disabled selected>סוג מוצר</option>
         <option value="Print Only">הדפסה בלבד</option>
-        <option value="Print + Mount">הדפסה + תלייה</option>
-        <option value="Print + Frame">הדפסה + מסגרת</option>
-        <option value="Frame Only">מסגרת בלבד</option>
+        <option value="Print + Mount">הדפסה + הדבקה</option>
+        <option value="Print + Frame">הדפסה + מסגור</option>
+        <option value="Frame Only">מסגור בלבד</option>
     `;
 
     paperType.innerHTML = `
         <option value="" disabled selected>סוג נייר</option>
-        <option value="Fine Art Paper">נייר אמנות משובח</option>
-        <option value="Laminated Print">הדפסה למינציה</option>
-        <option value="Fine Art Cotton Paper">נייר כותנה אמנותי</option>
+        <option value="Fine Art Paper">נייר פיין ארט</option>
+        <option value="Laminated Print">הדפסה עם למינציה</option>
+        <option value="Fine Art Cotton Paper">נייר פיין ארט 100% כותנה</option>
     `;
 
     frameType.innerHTML = `
-        <option value="" disabled selected>סוג מסגרת</option>
-        <option value="Box Frame">מסגרת קופסה</option>
-        <option value="Floating Frame">מסגרת צפה</option>
-        <option value="Aluminium Frame">מסגרת אלומיניום</option>
+        <option value="" disabled selected>סוג מסגור</option>
+        <option value="Box Frame">מסגור קופסא</option>
+        <option value="Floating Frame">מסגור צף</option>
+        <option value="Aluminium Frame">מסגור אלומיניום</option>
     `;
 
     mountType.innerHTML = `
-        <option value="" disabled selected>סוג תלייה</option>
+        <option value="" disabled selected>סוג הדבקה</option>
     `;
 
     populatePrintSizes();
@@ -464,7 +470,7 @@ function translateOptionsToEnglish() {
     `;
 
     mountType.innerHTML = `
-        <option value="" disabled selected>Mount Type</option>
+        <option value="" disabled selected>Mounting Type</option>
     `;
 
     populatePrintSizes();
@@ -539,7 +545,7 @@ function populatePrintSizes() {
     const printSizeSelect = document.getElementById('printSize');
     const lang = document.documentElement.lang;
 
-    printSizeSelect.innerHTML = `<option value="" disabled selected>${lang === 'he' ? 'בחר גודל הדפסה' : 'Select a print size'}</option>`;
+    printSizeSelect.innerHTML = `<option value="" disabled selected>${lang === 'he' ? 'בחר גודל הדפסה' : 'Select Print Size'}</option>`;
 
     if (productType === 'Frame Only') {
         for (const size in dibondNoBackFramePriceTable) {
@@ -578,7 +584,7 @@ function populateMountTypes() {
     const addonOptions = document.getElementById('addonOptions');
     const quantityOptions = document.getElementById('quantityOptions');
 
-    mountTypeSelect.innerHTML = `<option value="" disabled selected>${document.documentElement.lang === 'he' ? 'בחר סוג תלייה' : 'Select a mount type'}</option>`;
+    mountTypeSelect.innerHTML = `<option value="" disabled selected>${document.documentElement.lang === 'he' ? 'בחור סוג הדבקה' : 'Select Mounting Type'}</option>`;
 
     if (productType === 'Print + Frame' && (frameType === 'Box Frame' || frameType === 'Floating Frame' || frameType === 'Aluminium Frame')) {
         const kapaPrices = kapaPriceTable[printSize];
@@ -625,14 +631,14 @@ function showDiasecOptions() {
     const diasecTypeOptions = document.getElementById('diasecTypeOptions');
     const printSize = document.getElementById('printSize').value;
     const diasecTypeSelect = document.getElementById('diasecType');
-    const paperTypeWrapper = document.getElementById('paperTypeOptions'); // Target the parent div for paper type
+    const paperTypeWrapper = document.getElementById('paperTypeOptions');
     const addonOptions = document.getElementById('addonOptions');
     const frameType = document.getElementById('frameType').value;
 
     if (mountType === 'Diasec') {
         addonOptions.classList.add('hidden'); // Ensure add-ons are hidden for Diasec
 
-        diasecTypeSelect.innerHTML = `<option value="" disabled selected>${document.documentElement.lang === 'he' ? 'בחר סוג דיאסק' : 'Select a Diasec type'}</option>`;
+        diasecTypeSelect.innerHTML = `<option value="" disabled selected>${document.documentElement.lang === 'he' ? 'בחר סוג דיאסק (פרספקס קידמי)' : 'Select Diasec Type (Acrylic Facemount)'}</option>`;
         for (const [type, price] of Object.entries(diasecPriceTable[printSize])) {
             diasecTypeSelect.innerHTML += `<option value="${type}">${document.documentElement.lang === 'he' ? translations[type] : type} - ${price} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
         }
@@ -669,21 +675,22 @@ function showDiasecOptions() {
 
 
 
+
 function populateFrameType() {
     const productType = document.getElementById('productType').value;
     const frameTypeSelect = document.getElementById('frameType');
     const lang = document.documentElement.lang;
 
     frameTypeSelect.innerHTML = `
-        <option value="" disabled selected>${lang === 'he' ? 'סוג מסגרת' : 'Frame Type'}</option>
+        <option value="" disabled selected>${lang === 'he' ? 'סוג מסגור' : 'Frame Type'}</option>
     `;
 
     if (productType === 'Frame Only') {
         frameTypeSelect.innerHTML += `
-            <option value="No Glass Floating Frame">${lang === 'he' ? translations['No Glass Floating Frame'] : 'No Glass Floating Frame'}</option>
+            <option value="No Glass Floating Frame">${lang === 'he' ? translations['No Glass Floating Frame'] : 'Floating Frame For Paintings'}</option>
             <option value="Light Box">${lang === 'he' ? translations['Light Box'] : 'Light Box'}</option>
             <option value="Stretcher Frame">${lang === 'he' ? translations['Stretcher Frame'] : 'Stretcher Frame'}</option>
-            <option value="Box Frame for Originals on Paper">${lang === 'he' ? translations['Box Frame for Originals on Paper'] : 'Box Frame for Originals on Paper'}</option>
+            <option value="Box Frame for Originals on Paper">${lang === 'he' ? translations['Box Frame for Originals on Paper'] : 'Box Frame for Originals'}</option>
         `;
     } else if (productType === 'Print + Frame') {
         frameTypeSelect.innerHTML += `
@@ -804,9 +811,9 @@ function updateSummary() {
         { id: 'productType', label: { en: 'Product Type', he: 'סוג מוצר' } },
         { id: 'paperType', label: { en: 'Paper Type', he: 'סוג נייר' } },
         { id: 'printSize', label: { en: 'Print Size', he: 'גודל הדפסה' } },
-        { id: 'mountType', label: { en: 'Mount Type', he: 'סוג תלייה' } },
-        { id: 'diasecType', label: { en: 'Diasec Type', he: 'סוג דיאסק' } },
-        { id: 'frameType', label: { en: 'Frame Type', he: 'סוג מסגרת' } },
+        { id: 'mountType', label: { en: 'Mounting Type', he: 'סוג הדבקה' } },
+        { id: 'diasecType', label: { en: 'Diasec Type (Acrylic Facemount)', he: 'סוג דיאסק (פרספקס קידמי)' } },
+        { id: 'frameType', label: { en: 'Frame Type', he: 'סוג מסגור' } },
     ];
 
     const summaryText = document.getElementById('summaryText');
@@ -996,7 +1003,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="upload-container">
             <input type="file" id="imageUpload" name="imageUpload" accept="image/*" class="upload-input" multiple>
             <label for="imageUpload" class="upload-box">
-                <span>${document.documentElement.lang === 'he' ? 'לצרף קבצים' : 'Upload Files'}</span>
+                <span>${document.documentElement.lang === 'he' ? 'להעלות קבצים להדפסה' : 'Upload Files For Print'}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
                     <path d="M.5 9.9a.5.5 0 0 1 1 0v2.6h13V9.9a.5.5 0 0 1 1 0v2.6A1.5 1.5 0 0 1 14.5 14H1.5a1.5 1.5 0 0 1-1-2.5v-2.6z"/>
                     <path d="M5.646 4.854a.5.5 0 0 1 .708 0L8 6.5l1.646-1.646a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 0-.708z"/>
@@ -1059,8 +1066,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (productType) summary += `-Product Type: ${productType}\n`;
         if (paperType) summary += `-Paper Type: ${paperType}\n`;
         if (printSize) summary += `-Print Size: ${printSize}\n`;
-        if (mountType) summary += `-Mount Type: ${mountType}\n`;
-        if (diasecType) summary += `-Diasec Type: ${diasecType}\n`;
+        if (mountType) summary += `-Mounting Type: ${mountType}\n`;
+        if (diasecType) summary += `-Diasec Type (Acrylic Facemount): ${diasecType}\n`;
         if (frameType) summary += `-Frame Type: ${frameType}\n`;
         if (addons.length > 0) summary += `-Add-ons: ${addons.join(', ')}\n`;
         summary += "\n";
