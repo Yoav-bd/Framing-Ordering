@@ -123,7 +123,7 @@
         </div>
         
         <div class="footnote">
-            <p>Prices listed are for standard sizes. For custom sizes, please email us for a quote.</p>
+            <p>Prices listed are for standard sizes. For custom sizes, please email us for a quote. <span>Minimum order of 750 NIS.</span></p>
         </div>
     </div>
     <div id="popupForm" class="popup">
@@ -133,6 +133,16 @@
             </form>
         </div>
     </div>
+
+    <!-- Add this at the end of your existing HTML -->
+<div id="confirmationPopup" class="confirmation-popup">
+    <div class="confirmation-popup-content">
+        <span class="close-confirmation">&times;</span>
+        <h2 id="confirmationTitle"></h2>
+        <p id="confirmationMessage"></p>
+    </div>
+</div>
+
     <script src="script.js"></script>
 </body>
 </html>

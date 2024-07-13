@@ -143,7 +143,7 @@ const translations = {
     'Floating Frame': 'מסגור צף',
     'Aluminium Frame': 'מסגור אלומיניום',
     'Floating Frame For Paintings': 'מסגור צף לציורים',
-    'Light Box': 'קופסאת אור',
+    'Light Box(Includes Printing)': 'קופסאת אור (כולל הדפסה) ',
     'KAPA White (Line)': 'קאפה לבן (Line)',
     'KAPA Grey (Fix)': 'קאפה אפור (Fix)',
     'Dibond': 'דיבונד',
@@ -155,12 +155,14 @@ const translations = {
     'Luxurious Wood': 'עץ יוקרתי',
     'Anti-Reflective Glass': 'זכוכית אנטי רפלקטיבית',
     'Museum-Quality Mat': 'שטיח באיכות מוזיאון',
-    'Acid Free Passpartout': 'פספרטו נטול חומצה',
+    'Acid Free Passepartout': 'פספרטו נטול חומצה',
     'Stretcher Frame': 'מסגרת מתיחה',
     'Stretcher frame + Stretching':'מסגרת אלונקה + מתיחה',
     'Box Frame for Originals': 'מסגור קופסא לעבודות מקוריות',
     'Aluminium Profile':'פרופיל אלומיניום',
-    'Aluminum Profile - Wood Veneer': 'פרופיל אלומיניום מצופה עץ'
+    'Aluminum Profile - Wood Veneer': 'פרופיל אלומיניום מצופה עץ',
+    'Dibond(Including Alu. Back Frame)': 'דיבונד (כולל מסגרת אלומיניום אחורית)',
+    'Diasec(Including Alu. Back Frame)': 'דיאסק (כולל מסגרת אלומיניום אחורית)'
 };
 
 
@@ -323,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('resetButton').innerHTML = 'איפוס <svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 21C7.75 21 6.57917 20.7625 5.4875 20.2875C4.39583 19.8125 3.44583 19.1708 2.6375 18.3625C1.82917 17.5542 1.1875 16.6042 0.7125 15.5125C0.2375 14.4208 0 13.25 0 12H2C2 13.95 2.67917 15.6042 4.0375 16.9625C5.39583 18.3208 7.05 19 9 19C10.95 19 12.6042 18.3208 13.9625 16.9625C15.3208 15.6042 16 13.95 16 12C16 10.05 15.3208 8.39583 13.9625 7.0375C12.6042 5.67917 10.95 5 9 5H8.85L10.4 6.55L9 8L5 4L9 0L10.4 1.45L8.85 3H9C10.25 3 11.4208 3.2375 12.5125 3.7125C13.6042 4.1875 14.5542 4.82917 15.3625 5.6375C16.1708 6.44583 16.8125 7.39583 17.2875 8.4875C17.7625 9.57917 18 10.75 18 12C18 13.25 17.7625 14.4208 17.2875 15.5125C16.8125 16.6042 16.1708 17.5542 15.3625 18.3625C14.5542 19.1708 13.6042 19.8125 12.5125 20.2875C11.4208 20.7625 10.25 21 9 21Z" fill="#1C1B1F"/></svg>';
         document.querySelector('.total-cost-label').textContent = 'עלות כוללת:';
         document.getElementById('totalCost').textContent = '0 ₪';
-        document.querySelector('.footnote p').innerHTML = 'המחירים המפורטים הם עבור גדלים סטנדרטיים. לקבלת הצעת מחיר עבור גדלים מותאמים אישית, אנא צרו איתנו קשר.';
+        document.querySelector('.footnote p').innerHTML = 'המחירים המפורטים הם עבור גדלים סטנדרטיים. לקבלת הצעת מחיר עבור גדלים מותאמים אישית, אנא צרו איתנו קשר. <span style="color:black; font-weight:bold;">מינימום הזמנה של 750 ש"ח.</span>';
         translateToHebrew();
     } else {
         document.body.classList.remove('rtl');
@@ -332,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('resetButton').innerHTML = 'Reset <svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 21C7.75 21 6.57917 20.7625 5.4875 20.2875C4.39583 19.8125 3.44583 19.1708 2.6375 18.3625C1.82917 17.5542 1.1875 16.6042 0.7125 15.5125C0.2375 14.4208 0 13.25 0 12H2C2 13.95 2.67917 15.6042 4.0375 16.9625C5.39583 18.3208 7.05 19 9 19C10.95 19 12.6042 18.3208 13.9625 16.9625C15.3208 15.6042 16 13.95 16 12C16 10.05 15.3208 8.39583 13.9625 7.0375C12.6042 5.67917 10.95 5 9 5H8.85L10.4 6.55L9 8L5 4L9 0L10.4 1.45L8.85 3H9C10.25 3 11.4208 3.2375 12.5125 3.7125C13.6042 4.1875 14.5542 4.82917 15.3625 5.6375C16.1708 6.44583 16.8125 7.39583 17.2875 8.4875C17.7625 9.57917 18 10.75 18 12C18 13.25 17.7625 14.4208 17.2875 15.5125C16.8125 16.6042 16.1708 17.5542 15.3625 18.3625C14.5542 19.1708 13.6042 19.8125 12.5125 20.2875C11.4208 20.7625 10.25 21 9 21Z" fill="#1C1B1F"/></svg>';
         document.querySelector('.total-cost-label').textContent = 'Total Cost:';
         document.getElementById('totalCost').textContent = '0 NIS';
-        document.querySelector('.footnote p').innerHTML = 'Prices listed are for standard sizes. For custom sizes, please contact us for a quote.';
+        document.querySelector('.footnote p').innerHTML = 'Prices listed are for standard sizes. For custom sizes, please contact us for a quote. <span style="color:black;">Minimum order of 750 NIS.</span>';
         translateToEnglish();
     }
     updateInputImages(); // Ensure background images switch sides
@@ -378,7 +380,6 @@ function translateToHebrew() {
     document.getElementById('labelQuantity').textContent = 'כמות:';
     document.getElementById('summaryTitle').textContent = 'סיכום';
     document.getElementById('submitOrder').textContent = 'צור קשר';
-    document.querySelector('.footnote p').innerHTML = 'המחירים המפורטים הם עבור גדלים סטנדרטיים. לקבלת הצעת מחיר עבור גדלים מותאמים אישית, אנא צרו איתנו קשר.';
     translateOptionsToHebrew();
     translateDynamicContentToHebrew(); // Ensure dynamic content is translated
     updateSummary(); // Ensure summary is updated after translation
@@ -433,7 +434,6 @@ function translateToEnglish() {
     document.getElementById('labelQuantity').textContent = 'Quantity';
     document.getElementById('summaryTitle').textContent = 'Summary';
     document.getElementById('submitOrder').textContent = 'Contact Us';
-    document.querySelector('.footnote p').innerHTML = 'Prices listed are for standard sizes. For custom sizes, please contact us for a quote.';
     translateOptionsToEnglish();
     translateDynamicContentToEnglish(); // Ensure dynamic content is translated
     updateSummary(); // Ensure summary is updated after translation
@@ -602,9 +602,9 @@ function populateMountTypes() {
     } else if (productType === 'Print + Mount') {
         const dibondPrice = dibondPriceTable[printSize];
         if (dibondPrice) {
-            mountTypeSelect.innerHTML += `<option value="Dibond">${document.documentElement.lang === 'he' ? translations['Dibond'] : 'Dibond'} - ${dibondPrice} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
+            mountTypeSelect.innerHTML += `<option value="Dibond">${document.documentElement.lang === 'he' ? translations['Dibond(Including Alu. Back Frame)'] : 'Dibond(Including Alu. Back Frame)'} - ${dibondPrice} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
         }
-        mountTypeSelect.innerHTML += `<option value="Diasec">${document.documentElement.lang === 'he' ? translations['Diasec'] : 'Diasec'}</option>`;
+        mountTypeSelect.innerHTML += `<option value="Diasec">${document.documentElement.lang === 'he' ? translations['Diasec(Including Alu. Back Frame)'] : 'Diasec(Including Alu. Back Frame)'}</option>`;
     }
 
     mountTypeSelect.classList.remove('hidden');
@@ -688,10 +688,10 @@ function populateFrameType() {
 
     if (productType === 'Frame Only') {
         frameTypeSelect.innerHTML += `
-            <option value="No Glass Floating Frame">${lang === 'he' ? translations['No Glass Floating Frame'] : 'Floating Frame For Paintings'}</option>
-            <option value="Light Box">${lang === 'he' ? translations['Light Box'] : 'Light Box'}</option>
+            <option value="Floating Frame For Paintings">${lang === 'he' ? translations['Floating Frame For Paintings'] : 'Floating Frame For Paintings'}</option>
+            <option value="Light Box(Includes Printing)">${lang === 'he' ? translations['Light Box(Includes Printing)'] : 'Light Box(Includes Printing)'}</option>
             <option value="Stretcher Frame">${lang === 'he' ? translations['Stretcher Frame'] : 'Stretcher Frame'}</option>
-            <option value="Box Frame for Originals on Paper">${lang === 'he' ? translations['Box Frame for Originals on Paper'] : 'Box Frame for Originals'}</option>
+            <option value="Box Frame for Originals">${lang === 'he' ? translations['Box Frame for Originals'] : 'Box Frame for Originals'}</option>
         `;
     } else if (productType === 'Print + Frame') {
         frameTypeSelect.innerHTML += `
@@ -738,13 +738,13 @@ function showFrameOptions() {
         options = floatingFramePriceTable[printSize];
     } else if (frameType === 'Aluminium Frame') {
         options = aluminiumFramePriceTable[printSize];
-    } else if (frameType === 'No Glass Floating Frame') {
+    } else if (frameType === 'Floating Frame For Paintings') {
         options = noGlassFloatingFramesPriceTable[printSize];
-    } else if (frameType === 'Light Box') {
+    } else if (frameType === 'Light Box(Includes Printing)') {
         options = lightBoxPriceTable[printSize];
     } else if (frameType === 'Stretcher Frame') {
         options = stretcherFramePriceTable[printSize];
-    } else if (frameType === 'Box Frame for Originals on Paper') {
+    } else if (frameType === 'Box Frame for Originals') {
         options = boxFrameOriginalsPriceTable[printSize];
     }
 
@@ -775,14 +775,14 @@ function showFrameOptions() {
         </div>
         <div class="checkbox-group">
             <input type="checkbox" id="addonPassepartout" name="addonOption" value="Passepartout" data-price="${passepartoutPrice}">
-            <label for="addonPassepartout">${lang === 'he' ? translations['Passepartout'] : 'Passepartout'} <span style="color: grey;">- ${passepartoutPrice} ${lang === 'he' ? '₪' : 'NIS'}</span></label>
+            <label for="addonPassepartout">${lang === 'he' ? translations['Acid Free Passepartout'] : 'Acid Free Passepartout'} <span style="color: grey;">- ${passepartoutPrice} ${lang === 'he' ? '₪' : 'NIS'}</span></label>
         </div>
     `;
 
     // Add event listeners to dynamically added radio buttons
     document.querySelectorAll('#frameDetails input[type="radio"]').forEach(option => {
         option.addEventListener('change', () => {
-            if (frameType !== 'No Glass Floating Frame' && frameType !== 'Light Box'  && frameType !== 'Stretcher Frame' && frameType !== 'Box Frame for Originals on Paper') {
+            if (frameType !== 'Floating Frame For Paintings' && frameType !== 'Light Box(Includes Printing)'  && frameType !== 'Stretcher Frame' && frameType !== 'Box Frame for Originals') {
                 mountOptions.classList.remove('hidden');
                 populateMountTypes();  // Ensure mount types are populated based on selected frame type
             } else {
@@ -989,6 +989,10 @@ window.onclick = function(event) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const popupFormContent = document.querySelector('.popup-content form');
+    const confirmationPopup = document.getElementById('confirmationPopup');
+    const closeConfirmationBtn = document.querySelector('.close-confirmation');
+    const confirmationTitle = document.getElementById('confirmationTitle');
+    const confirmationMessage = document.getElementById('confirmationMessage');
     
     // Clear existing content if any
     popupFormContent.innerHTML = '';
@@ -1012,11 +1016,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 </svg>
             </label>
         </div>
+        <ul id="fileList" class="file-list"></ul>
         <button id="popup-submit" type="submit">${document.documentElement.lang === 'he' ? 'לשלוח' : 'Send'}</button>
         <div id="confirmationMessage" style="display:none;">${document.documentElement.lang === 'he' ? 'נשלח!' : 'Sent!'}</div>
     `;
 
     popupFormContent.innerHTML = formElements;
+    // Handle file upload display
+    document.getElementById('imageUpload').addEventListener('change', function () {
+    const fileList = document.getElementById('fileList');
+    
+    Array.from(this.files).forEach(file => {
+        const fileItem = document.createElement('li');
+        fileItem.textContent = file.name;
+        fileList.appendChild(fileItem);
+    });
+});
+
+    
+    const uploadedFiles = Array.from(document.getElementById('imageUpload').files).map(file => file.name);
 
     // Handle form submission
     popupFormContent.addEventListener('submit', function(event) {
@@ -1076,6 +1094,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (totalCost) summary += `-Estimated Lead Value: ${totalCost} NIS\n`;
         summary += "\n";
         if (formData.additionalInfo) summary += `-Additional Info: ${formData.additionalInfo}\n`;
+        if (uploadedFiles.length > 0) summary += `-Uploaded Files: ${uploadedFiles.join(', ')}\n`;
     
         // Construct the GraphQL query for creating the item
         const query = `
@@ -1124,15 +1143,30 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             console.log('Update added:', data);
-            alert("Sent!");
             popupFormContent.innerHTML = '';
             popupFormContent.innerHTML = formElements;
+            document.getElementById('popupForm').style.display = 'none';
+             // Populate the confirmation popup content dynamically
+             confirmationTitle.textContent = document.documentElement.lang === 'he' ? 'תודה!' : 'Thank you!';
+             confirmationMessage.textContent = document.documentElement.lang === 'he' ? 'הבקשה נקלטה בהצלחה. ניצור איתך קשר ונזמין אותך אלינו לראות ולאשר טסט לפני הדפסה סופית.' : 'The request was successfully received. We will contact you and invite you to see and approve a test before final printing.';
+             // Show confirmation popup on successful submission
+             confirmationPopup.style.display = 'block';
         })
         .catch(error => {
             console.error('Error submitting order:', error);
             alert("error please try again later");
         });
+        // When the user clicks on <span> (x), close the confirmation popup
+        closeConfirmationBtn.onclick = function() {
+        confirmationPopup.style.display = 'none';
+        }
     
+        // When the user clicks anywhere outside of the confirmation popup, close it
+        window.onclick = function(event) {
+        if (event.target == confirmationPopup) {
+            confirmationPopup.style.display = 'none';
+        }
+    }
     });
 });
 
