@@ -218,7 +218,7 @@ input::placeholder {
 
 /* Add this CSS to your existing stylesheet */
 .input-wrapper input[type="number"] {
-    width: 94.5%;
+    width: calc(100% - 32px);
     padding: 15px;
     border: 2px solid #000000;
     border-radius: 0;
@@ -463,6 +463,11 @@ body.rtl .summary-price {
 @media (max-width: 768px) {
     #title {
         display: none;
+    }
+
+    /* Add this rule to remove background image for quantity input on mobile */
+    #quantity {
+        background-image: none;
     }
 }
 

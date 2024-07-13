@@ -627,6 +627,7 @@ function populateMountTypes() {
 
 
 function showDiasecOptions() {
+    const productType = document.getElementById('productType').value;
     const mountType = document.getElementById('mountType').value;
     const diasecTypeOptions = document.getElementById('diasecTypeOptions');
     const printSize = document.getElementById('printSize').value;
@@ -665,7 +666,7 @@ function showDiasecOptions() {
         }
     }
 
-    if (frameType === 'Floating Frame') {
+    if (frameType === 'Floating Frame' || productType === 'print + mount') {
         addonOptions.classList.add('hidden'); // Hide add-ons for Floating Frame
     }
 
