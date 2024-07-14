@@ -604,7 +604,7 @@ function populateMountTypes() {
         if (dibondPrice) {
             mountTypeSelect.innerHTML += `<option value="Dibond">${document.documentElement.lang === 'he' ? translations['Dibond(Including Alu. Back Frame)'] : 'Dibond(Including Alu. Back Frame)'} - ${dibondPrice} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
         }
-        mountTypeSelect.innerHTML += `<option value="Diasec">${document.documentElement.lang === 'he' ? translations['Diasec(Including Alu. Back Frame)'] : 'Diasec(Including Alu. Back Frame)'}</option>`;
+        mountTypeSelect.innerHTML += `<option value="Diasec">${document.documentElement.lang === 'he' ? translations['Diasec(Including Alu. Back Frame)'] : 'Diasec (Including Alu. Back Frame)'}</option>`;
     }
 
     mountTypeSelect.classList.remove('hidden');
