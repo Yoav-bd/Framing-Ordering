@@ -161,8 +161,8 @@ const translations = {
     'Box Frame for Originals': 'מסגור קופסא לעבודות מקוריות',
     'Aluminium Profile':'פרופיל אלומיניום',
     'Aluminum Profile - Wood Veneer': 'פרופיל אלומיניום מצופה עץ',
-    'Dibond(Including Alu. Back Frame)': 'דיבונד (כולל מסגרת אלומיניום אחורית)',
-    'Diasec(Including Alu. Back Frame)': 'דיאסק (כולל מסגרת אלומיניום אחורית)'
+    'Dibond(Includes Alu. Back Frame)': 'דיבונד (כולל מסגרת אלומיניום אחורית)',
+    'Diasec(Includes Alu. Back Frame)': 'דיאסק (כולל מסגרת אלומיניום אחורית)'
 };
 
 
@@ -602,9 +602,9 @@ function populateMountTypes() {
     } else if (productType === 'Print + Mount') {
         const dibondPrice = dibondPriceTable[printSize];
         if (dibondPrice) {
-            mountTypeSelect.innerHTML += `<option value="Dibond">${document.documentElement.lang === 'he' ? translations['Dibond(Including Alu. Back Frame)'] : 'Dibond(Including Alu. Back Frame)'} - ${dibondPrice} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
+            mountTypeSelect.innerHTML += `<option value="Dibond">${document.documentElement.lang === 'he' ? translations['Dibond(Includes Alu. Back Frame)'] : 'Dibond(Includes Alu. Back Frame)'} - ${dibondPrice} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
         }
-        mountTypeSelect.innerHTML += `<option value="Diasec">${document.documentElement.lang === 'he' ? translations['Diasec(Including Alu. Back Frame)'] : 'Diasec (Including Alu. Back Frame)'}</option>`;
+        mountTypeSelect.innerHTML += `<option value="Diasec">${document.documentElement.lang === 'he' ? translations['Diasec(Includes Alu. Back Frame)'] : 'Diasec (Includes Alu. Back Frame)'}</option>`;
     }
 
     mountTypeSelect.classList.remove('hidden');
@@ -775,7 +775,7 @@ function showFrameOptions() {
         </div>
         <div class="checkbox-group">
             <input type="checkbox" id="addonPassepartout" name="addonOption" value="Passepartout" data-price="${passepartoutPrice}">
-            <label for="addonPassepartout">${lang === 'he' ? translations['Acid Free Passepartout'] : 'Acid Free Passepartout'} <span style="color: grey;">- ${passepartoutPrice} ${lang === 'he' ? '₪' : 'NIS'}</span></label>
+            <label for="addonPassepartout">${lang === 'he' ? translations['Acid Free Passepartout'] : 'Acid-Free Passepartout'} <span style="color: grey;">- ${passepartoutPrice} ${lang === 'he' ? '₪' : 'NIS'}</span></label>
         </div>
     `;
 
