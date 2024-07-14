@@ -602,7 +602,7 @@ function populateMountTypes() {
     } else if (productType === 'Print + Mount') {
         const dibondPrice = dibondPriceTable[printSize];
         if (dibondPrice) {
-            mountTypeSelect.innerHTML += `<option value="Dibond">${document.documentElement.lang === 'he' ? translations['Dibond(Includes Alu. Back Frame)'] : 'Dibond(Includes Alu. Back Frame)'} - ${dibondPrice} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
+            mountTypeSelect.innerHTML += `<option value="Dibond">${document.documentElement.lang === 'he' ? translations['Dibond(Includes Alu. Back Frame)'] : 'Dibond (Includes Alu. Back Frame)'} - ${dibondPrice} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
         }
         mountTypeSelect.innerHTML += `<option value="Diasec">${document.documentElement.lang === 'he' ? translations['Diasec(Includes Alu. Back Frame)'] : 'Diasec (Includes Alu. Back Frame)'}</option>`;
     }
