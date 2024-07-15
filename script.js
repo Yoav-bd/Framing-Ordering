@@ -224,7 +224,7 @@ document.getElementById('frameType').addEventListener('change', () => {
 
 document.getElementById('quantity').addEventListener('input', updateSummary);
 
-document.getElementById('languageButton').addEventListener('click', toggleLanguage);
+// document.getElementById('languageButton').addEventListener('click', toggleLanguage);
 document.getElementById('submitOrder').addEventListener('click', submitOrder);
 
 document.querySelectorAll('#frameDetails input[type="radio"]').forEach(option => {
