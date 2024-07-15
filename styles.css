@@ -524,9 +524,9 @@ body.rtl .summary-price {
     padding: 20px;
     border: 1px solid #888;
     width: 700px; /* Set the width to 1000px */
-    height: 600px; /* Set the height to 1000px */
+    height: 650px; /* Set the height to 1000px */
     max-width: 700px; /* Ensure it does not exceed 1000px */
-    max-height: 600px; /* Ensure it does not exceed 1000px */
+    max-height: 650px; /* Ensure it does not exceed 1000px */
 }
 .close {
     color: black;
@@ -719,4 +719,31 @@ body.rtl .summary-price {
     background: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+/* Ensure textarea matches input styling */
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid grey;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "SctoGroteskA", sans-serif;
+    appearance: none;
+    background-color: #FCFAF5; /* Same as site background */
+    color: black;
+    box-sizing: border-box; /* Ensure padding doesn't affect the width */
+    margin-bottom: 20px; /* Add space between inputs */
+    font-family: "GretaText";
+    font-weight: lighter;
+}
+
+textarea::placeholder {
+    color: grey; /* Set placeholder text color to black */
+    font-weight: lighter; /* Match other input fields */
+}
+
+textarea::selection{
+    border: 2px solid black;
 }

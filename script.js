@@ -1016,7 +1016,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <input type="text" id="lastName" name="lastName" placeholder="${document.documentElement.lang === 'he' ? 'שם משפחה*' : 'Last Name*'}" required>
         <input type="number" id="phoneNumber" name="phoneNumber" placeholder="${document.documentElement.lang === 'he' ? 'מספר טלפון*' : 'Phone Number*'}" required>
         <input type="email" id="email" name="email" placeholder="${document.documentElement.lang === 'he' ? 'אימייל*' : 'Email*'}" required>
-        <input type="text" id="additionalInfo" name="additionalInfo" placeholder="${document.documentElement.lang === 'he' ? 'משהו נוסף שצריך שנדע?' : 'Anything else we should know?'}">
+        <textarea type="text" id="additionalInfo" name="additionalInfo" placeholder="${document.documentElement.lang === 'he' ? 'משהו נוסף שצריך שנדע?' : 'Anything else we should know?'}"></textarea>
         <button id="popup-submit" type="submit">${document.documentElement.lang === 'he' ? 'לשלוח' : 'Send'}</button>
         <div id="confirmationMessage" style="display:none;">${document.documentElement.lang === 'he' ? 'נשלח!' : 'Sent!'}</div>
     `;
