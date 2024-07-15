@@ -447,7 +447,7 @@ body.rtl .summary-price {
    font-size: 12px;
    color: grey;
    display: inline-block;
-   max-width: 500px;
+   max-width: 75%;
 }
 
 .footnote a {
