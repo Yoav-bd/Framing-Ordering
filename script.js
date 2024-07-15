@@ -374,7 +374,7 @@ function translateToHebrew() {
     document.getElementById('labelPaperType').textContent = 'נייר:';
     document.getElementById('labelPrintSize').textContent = 'הדפסה';
     document.getElementById('labelFrameType').textContent = 'מסגרת';
-    document.getElementById('labelMountType').textContent = 'תלייה';
+    document.getElementById('labelMountType').textContent = 'הדבקה';
     document.getElementById('labelDiasecType').textContent = 'דיאסק';
     document.getElementById('labelAddons').textContent = 'תוספות';
     document.getElementById('labelQuantity').textContent = 'כמות:';
