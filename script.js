@@ -1024,9 +1024,6 @@ document.addEventListener('DOMContentLoaded', () => {
     popupFormContent.innerHTML = formElements;
     
 
-    
-    const uploadedFiles = Array.from(document.getElementById('imageUpload').files).map(file => file.name);
-
     // Handle form submission
     popupFormContent.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent default form submission
