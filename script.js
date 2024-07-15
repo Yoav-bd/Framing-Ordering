@@ -157,7 +157,7 @@ const translations = {
     'Museum-Quality Mat': 'שטיח באיכות מוזיאון',
     'Acid Free Passepartout': 'פספרטו נטול חומצה',
     'Stretcher Frame': 'מסגרת מתיחה',
-    'Stretcher frame + Stretching':'מסגרת אלונקה + מתיחה',
+    'Stretcher frame + Stretching':'מסגרת מתיחה + מתיחה',
     'Box Frame for Originals': 'מסגור קופסה לעבודות מקוריות',
     'Aluminium Profile':'פרופיל אלומיניום',
     'Aluminum Profile - Wood Veneer': 'פרופיל אלומיניום מצופה עץ',
