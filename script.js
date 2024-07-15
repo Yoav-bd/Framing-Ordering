@@ -1021,17 +1021,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <div id="confirmationMessage" style="display:none;">${document.documentElement.lang === 'he' ? 'נשלח!' : 'Sent!'}</div>
     `;
 
-    popupFormContent.innerHTML = formElements;
-    // Handle file upload display
-    document.getElementById('imageUpload').addEventListener('change', function () {
-    const fileList = document.getElementById('fileList');
-    
-    Array.from(this.files).forEach(file => {
-        const fileItem = document.createElement('li');
-        fileItem.textContent = file.name;
-        fileList.appendChild(fileItem);
-    });
-});
 
     
     const uploadedFiles = Array.from(document.getElementById('imageUpload').files).map(file => file.name);
@@ -1094,7 +1083,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (totalCost) summary += `-Estimated Lead Value: ${totalCost} NIS\n`;
         summary += "\n";
         if (formData.additionalInfo) summary += `-Additional Info: ${formData.additionalInfo}\n`;
-        if (uploadedFiles.length > 0) summary += `-Uploaded Files: ${uploadedFiles.join(', ')}\n`;
     
         // Construct the GraphQL query for creating the item
         const query = `
