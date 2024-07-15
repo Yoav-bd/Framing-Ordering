@@ -602,9 +602,9 @@ function populateMountTypes() {
     } else if (productType === 'Print + Mount') {
         const dibondPrice = dibondPriceTable[printSize];
         if (dibondPrice) {
-            mountTypeSelect.innerHTML += `<option value="Dibond">${document.documentElement.lang === 'he' ? translations['Dibond(Includes Alu. Back Frame)'] : 'Dibond (Includes Alu. Back Frame)'} - ${dibondPrice} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
+            mountTypeSelect.innerHTML += `<option value="Dibond">${document.documentElement.lang === 'he' ? translations['Dibond'] : 'Dibond'} - ${dibondPrice} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
         }
-        mountTypeSelect.innerHTML += `<option value="Diasec">${document.documentElement.lang === 'he' ? translations['Diasec(Includes Alu. Back Frame)'] : 'Diasec (Includes Alu. Back Frame)'}</option>`;
+        mountTypeSelect.innerHTML += `<option value="Diasec">${document.documentElement.lang === 'he' ? translations['Diasec'] : 'Diasec'}</option>`;
     }
 
     mountTypeSelect.classList.remove('hidden');
@@ -874,10 +874,17 @@ function updateSummary() {
                     price = parseInt(option.dataset.price);
                 });
             }
-            // Skip adding paperType to summary if Diasec is selected
-            if (!(mountType === 'Diasec' && element.id === 'paperType')) {
-                createSummaryLine(lang === 'he' ? element.label.he : element.label.en, lang === 'he' ? (translations[value] || value) : value, price);
+
+            // Append "(Includes Alu. Back Frame)" for Print + Mount in the summary
+            if (productType === 'Print + Mount' && (mountType === 'Dibond' || mountType === 'Diasec') && element.id === 'mountType') {
+                const translatedValue = lang === 'he' ? translations[value] || value : value;
+                const valueWithBackFrame = `${translatedValue} ${lang === 'he' ? '(כולל מסגרת אלומיניום אחורית)' : '(Includes Alu. Back Frame)'}`;
+                createSummaryLine(lang === 'he' ? element.label.he : element.label.en, valueWithBackFrame, price);
+            } else if (!(mountType === 'Diasec' && element.id === 'paperType')) {
+                const translatedValue = lang === 'he' ? translations[value] || value : value;
+                createSummaryLine(lang === 'he' ? element.label.he : element.label.en, translatedValue, price);
             }
+            
             totalCost += price * quantity;
         }
     });
@@ -938,6 +945,9 @@ function updateSummary() {
 
 // Call the function to update the summary initially
 updateSummary();
+
+
+
 
 
 
