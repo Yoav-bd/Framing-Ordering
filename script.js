@@ -139,11 +139,11 @@ const translations = {
     'Fine Art Paper': 'נייר פיין ארט',
     'Laminated Print': 'הדפסה עם למינציה',
     'Fine Art Cotton Paper': 'נייר פיין ארט 100% כותנה',
-    'Box Frame': 'מסגור קופסא',
+    'Box Frame': 'מסגור קופסה',
     'Floating Frame': 'מסגור צף',
     'Aluminium Frame': 'מסגור אלומיניום',
     'Floating Frame For Paintings': 'מסגור צף לציורים',
-    'Light Box(Includes Printing)': 'קופסאת אור (כולל הדפסה) ',
+    'Light Box(Includes Printing)': 'קופסת אור (כולל הדפסה) ',
     'KAPA White (Line)': 'קאפה לבן (Line)',
     'KAPA Grey (Fix)': 'קאפה אפור (Fix)',
     'Dibond': 'דיבונד',
@@ -158,7 +158,7 @@ const translations = {
     'Acid Free Passepartout': 'פספרטו נטול חומצה',
     'Stretcher Frame': 'מסגרת מתיחה',
     'Stretcher frame + Stretching':'מסגרת אלונקה + מתיחה',
-    'Box Frame for Originals': 'מסגור קופסא לעבודות מקוריות',
+    'Box Frame for Originals': 'מסגור קופסה לעבודות מקוריות',
     'Aluminium Profile':'פרופיל אלומיניום',
     'Aluminum Profile - Wood Veneer': 'פרופיל אלומיניום מצופה עץ',
     'Dibond(Includes Alu. Back Frame)': 'דיבונד (כולל מסגרת אלומיניום אחורית)',
@@ -409,7 +409,7 @@ function translateOptionsToHebrew() {
 
     frameType.innerHTML = `
         <option value="" disabled selected>סוג מסגור</option>
-        <option value="Box Frame">מסגור קופסא</option>
+        <option value="Box Frame">מסגור קופסה</option>
         <option value="Floating Frame">מסגור צף</option>
         <option value="Aluminium Frame">מסגור אלומיניום</option>
     `;
