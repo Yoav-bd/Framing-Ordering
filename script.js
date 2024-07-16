@@ -377,13 +377,13 @@ function updateInputImages() {
 function translateToHebrew() {
     document.querySelector('h2').textContent = 'מחשבון מחירים';
     document.getElementById('labelProductType').textContent = 'מוצר';
-    document.getElementById('labelPaperType').textContent = 'נייר:';
+    document.getElementById('labelPaperType').textContent = 'נייר';
     document.getElementById('labelPrintSize').textContent = 'הדפסה';
     document.getElementById('labelFrameType').textContent = 'מסגרת';
     document.getElementById('labelMountType').textContent = 'הדבקה';
     document.getElementById('labelDiasecType').textContent = 'דיאסק';
     document.getElementById('labelAddons').textContent = 'תוספות';
-    document.getElementById('labelQuantity').textContent = 'כמות:';
+    document.getElementById('labelQuantity').textContent = 'כמות';
     document.getElementById('summaryTitle').textContent = 'סיכום';
     document.getElementById('submitOrder').textContent = 'צור קשר';
     translateOptionsToHebrew();

@@ -10,6 +10,46 @@
     src: url('fonts/greta-text-h-l-medium.woff2') format('woff2');
 }
 
+@font-face {
+    font-family: "SimplerPro";
+    font-weight: 500;
+    src: url('fonts/simpler-pro-bold.woff2') format('woff2');
+}
+
+
+
+@font-face {
+    font-family: "Hadassah";
+    font-weight: 500;
+    src: url('fonts/hadassah-friedlaender-medium.woff2') format('woff2');
+}
+
+
+
+
+/* Apply to elements when Hebrew is selected */
+:lang(he) body,
+:lang(he) input[type="number"],
+:lang(he) .radio-group input[type="radio"] + label,
+:lang(he) .checkbox-group input[type="checkbox"] + label,
+:lang(he) select{
+    font-family: "SimplerPro", Arial, sans-serif;
+    line-height:1.2; /* Ensure the same line-height as above */
+    vertical-align: middle; /* Ensure the same vertical alignment */
+}
+
+
+
+
+:lang(he) .summary h3 {
+    font-family: "Hadassah", 'Times New Roman', Times, serif;
+}
+
+:lang(he) #submitOrder{
+    font-family: "SimplerPro";
+}
+
+
 html, body {
     font-family: "SctoGroteskA", sans-serif;
     margin: 0;
@@ -81,6 +121,7 @@ html, body {
     cursor: pointer;
     transition: background-color 0.3s ease;
     border: 2px solid #000; 
+    font-family:  "SctoGroteskA";
 }
 
 #submitOrder:hover {
