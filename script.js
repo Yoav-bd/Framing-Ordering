@@ -199,6 +199,13 @@ document.getElementById('printSize').addEventListener('change', () => {
         populateFrameType();
     }
     populateMountTypes();
+
+    // Show custom size inputs when "Select a Custom Size" is chosen
+    if (document.getElementById('printSize').value === 'Custom') {
+        document.getElementById('customSizeOptions').classList.remove('hidden');
+    } else {
+        document.getElementById('customSizeOptions').classList.add('hidden');
+    }
     updateSummary();
 });
 
@@ -500,6 +507,147 @@ function translateDynamicContentToEnglish() {
     });
 }
 
+function interpolate(x, x0, y0, x1, y1) {
+    return y0 + (y1 - y0) * ((x - x0) / (x1 - x0));
+}
+
+function getInterpolatedPrice(size, prices, customSize) {
+    const sizes = Object.keys(prices).map(s => {
+        const [w, h] = s.split('x').map(Number);
+        return { size: s, width: w, height: h, price: prices[s] };
+    }).sort((a, b) => a.width * a.height - b.width * b.height);
+
+    for (let i = 0; i < sizes.length - 1; i++) {
+        const { width: w0, height: h0, price: p0 } = sizes[i];
+        const { width: w1, height: h1, price: p1 } = sizes[i + 1];
+
+        const area0 = w0 * h0;
+        const area1 = w1 * h1;
+        const customArea = customSize.width * customSize.height;
+
+        if (customArea >= area0 && customArea <= area1) {
+            return Math.round(interpolate(customArea, area0, p0, area1, p1));
+        }
+    }
+
+    // If custom size is larger than all predefined sizes, extrapolate from the largest two sizes
+    const { width: w0, height: h0, price: p0 } = sizes[sizes.length - 2];
+    const { width: w1, height: h1, price: p1 } = sizes[sizes.length - 1];
+    const area0 = w0 * h0;
+    const area1 = w1 * h1;
+    const customArea = customSize.width * customSize.height;
+
+    return Math.round(interpolate(customArea, area0, p0, area1, p1));
+}
+
+
+
+function getInterpolatedPriceByType(prices, customSize) {
+    const sizes = Object.keys(prices).map(s => {
+        const [w, h] = s.split('x').map(Number);
+        return { size: s, width: w, height: h, prices: prices[s] };
+    }).sort((a, b) => a.width * a.height - b.width * b.height);
+
+    if (sizes.length < 2) {
+        console.warn("Not enough sizes to perform interpolation.");
+        return null;
+    }
+
+    const customArea = customSize.width * customSize.height;
+    const types = Object.keys(sizes[0].prices);
+
+    for (let i = 0; i < sizes.length - 1; i++) {
+        const { width: w0, height: h0, prices: p0 } = sizes[i];
+        const { width: w1, height: h1, prices: p1 } = sizes[i + 1];
+
+        const area0 = w0 * h0;
+        const area1 = w1 * h1;
+
+        if (customArea >= area0 && customArea <= area1) {
+            const result = {};
+            types.forEach(type => {
+                result[type] = Math.round(interpolate(customArea, area0, p0[type], area1, p1[type]));
+            });
+            return result;
+        }
+    }
+
+    // If custom size is larger than all predefined sizes, extrapolate from the largest two sizes
+    const { width: w0, height: h0, prices: p0 } = sizes[sizes.length - 2];
+    const { width: w1, height: h1, prices: p1 } = sizes[sizes.length - 1];
+    const area0 = w0 * h0;
+    const area1 = w1 * h1;
+
+    const result = {};
+    types.forEach(type => {
+        result[type] = Math.round(interpolate(customArea, area0, p0[type], area1, p1[type]));
+    });
+    return result;
+}
+
+
+function addCustomSizeToTables(customWidth, customHeight) {
+    const customSizeKey = `${customWidth}x${customHeight}`;
+    const customSize = { width: customWidth, height: customHeight };
+
+    // Simple price tables
+    Object.keys(priceTable).forEach(paperType => {
+        const interpolatedPrice = getInterpolatedPrice(paperType, priceTable[paperType], customSize);
+        if (interpolatedPrice !== null) {
+            priceTable[paperType][customSizeKey] = interpolatedPrice;
+        }
+    });
+
+    // Update dibondPriceTable and dibondNoBackFramePriceTable
+    [dibondPriceTable, dibondNoBackFramePriceTable].forEach(table => {
+        const interpolatedPrice = getInterpolatedPrice(customSizeKey, table, customSize);
+        if (interpolatedPrice !== null) {
+            table[customSizeKey] = interpolatedPrice;
+        }
+    });
+
+    // Update addonPriceTable
+    Object.keys(addonPriceTable).forEach(type => {
+        const interpolatedPrice = getInterpolatedPrice(customSizeKey, addonPriceTable[type], customSize);
+        if (interpolatedPrice !== null) {
+            addonPriceTable[type][customSizeKey] = interpolatedPrice;
+        }
+    });
+
+    // Complex price tables
+    const complexTables = [diasecPriceTable, kapaPriceTable, boxFramePriceTable, floatingFramePriceTable, aluminiumFramePriceTable, noGlassFloatingFramesPriceTable, lightBoxPriceTable, stretcherFramePriceTable, boxFrameOriginalsPriceTable];
+
+    complexTables.forEach(table => {
+        const interpolatedPrices = getInterpolatedPriceByType(table, customSize);
+        if (interpolatedPrices !== null) {
+            table[customSizeKey] = interpolatedPrices;
+        }
+    });
+
+    // Debugging: Print the updated tables
+    console.log("Updated priceTable:", priceTable);
+    console.log("Updated dibondPriceTable:", dibondPriceTable);
+    console.log("Updated dibondNoBackFramePriceTable:", dibondNoBackFramePriceTable);
+    console.log("Updated addonPriceTable:", addonPriceTable);
+    complexTables.forEach((table, index) => {
+        console.log(`Updated complexTable ${index + 1}:`, table);
+    });
+}
+
+
+
+
+document.getElementById('addCustomSize').addEventListener('click', () => {
+    const customWidth = parseFloat(document.getElementById('customWidth').value);
+    const customHeight = parseFloat(document.getElementById('customHeight').value);
+    if (customWidth > 0 && customHeight > 0) {
+        addCustomSizeToTables(customWidth, customHeight);
+    }
+    populatePrintSizes();
+    populateFrameType();
+    populateMountTypes();
+});
+
 
 function showOptions() {
     const productType = document.getElementById('productType').value;
@@ -574,6 +722,8 @@ function populatePrintSizes() {
             printSizeSelect.appendChild(option);
         }
     }
+
+    printSizeSelect.innerHTML += `<option value="Custom">${lang === 'he' ? 'בחר גודל מותאם אישית' : 'Select a Custom Size'}</option>`;
     document.getElementById('printSizeOptions').classList.remove('hidden');
     updateSummary();
 }
@@ -648,9 +798,13 @@ function showDiasecOptions() {
         addonOptions.classList.add('hidden'); // Ensure add-ons are hidden for Diasec
 
         diasecTypeSelect.innerHTML = `<option value="" disabled selected>${document.documentElement.lang === 'he' ? 'בחר סוג דיאסק (פרספקס קידמי)' : 'Select Diasec Type (Acrylic Facemount)'}</option>`;
-        for (const [type, price] of Object.entries(diasecPriceTable[printSize])) {
-            diasecTypeSelect.innerHTML += `<option value="${type}">${document.documentElement.lang === 'he' ? translations[type] : type} - ${price} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
+
+        if (printSize && diasecPriceTable[printSize]) {
+            for (const [type, price] of Object.entries(diasecPriceTable[printSize])) {
+                diasecTypeSelect.innerHTML += `<option value="${type}">${document.documentElement.lang === 'he' ? translations[type] : type} - ${price} ${document.documentElement.lang === 'he' ? '₪' : 'NIS'}</option>`;
+            }
         }
+        
         diasecTypeOptions.classList.remove('hidden');
         paperTypeWrapper.classList.add('hidden-no-space'); // Hide paper type with no spacing
 
@@ -664,7 +818,7 @@ function showDiasecOptions() {
         paperTypeWrapper.classList.remove('hidden-no-space'); // Show paper type with spacing
 
         const paperType = document.getElementById('paperType').value;
-        if (paperType) {
+        if (paperType && priceTable[paperType]) {
             for (const [size, price] of Object.entries(priceTable[paperType])) {
                 const option = Array.from(document.getElementById('printSize').options).find(opt => opt.value === size);
                 if (option) {
@@ -680,6 +834,7 @@ function showDiasecOptions() {
 
     updateSummary();
 }
+
 
 
 

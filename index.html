@@ -21,7 +21,7 @@
                     <option value="Frame Only">Frame Only</option>
                 </select>
             </div>
-
+            
             <div id="paperTypeOptions" class="form-group hidden">
                 <div class="input-wrapper">
                     <label for="paperType" id="labelPaperType" style="color:grey;">Paper</label>
@@ -43,6 +43,16 @@
                     </select>
                 </div>
             </div>
+
+            <div id="customSizeOptions" class="custom hidden">
+                <div id="customSizeFields">
+                    <input type="number" id="customWidth" name="customWidth" min="1" placeholder="Width">
+                    <span class="separator">X</span>
+                    <input type="number" id="customHeight" name="customHeight" min="1" placeholder="Height">
+                    <button type="button" id="customSizeButton">OK</button>
+                </div>
+            </div>
+            
 
             <div id="frameOptions" class="form-group hidden">
                 <div class="input-wrapper">

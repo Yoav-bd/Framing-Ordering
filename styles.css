@@ -788,3 +788,57 @@ textarea::placeholder {
 textarea::selection{
     border: 2px solid black;
 }
+
+
+#customSizeFields {
+    display: flex;
+    align-items: center;
+  
+}
+
+#customSizeFields input {
+    width: 80px; /* Ensure the inputs are square */
+    padding: 15px; /* Remove default padding */
+    border: 2px solid #000000;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "SctoGroteskA", sans-serif;
+    appearance: none;
+    background-color: #FCFAF5;
+    color: #000000;
+    text-align: center; /* Center text inside the input */
+    background-image: none; /* Remove background image */
+    -moz-appearance: textfield; /* Firefox */
+}
+
+
+
+
+#customSizeFields input::-webkit-outer-spin-button,
+#customSizeFields input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Remove default margin */
+}
+
+#customSizeFields .separator {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+#customSizeButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "SctoGroteskA", sans-serif;
+    background-color: #000;
+    color: #FCFAF5;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px; /* Space between input and button */
+}
+
+#customSizeButton:hover {
+    background-color: #333;
+}
