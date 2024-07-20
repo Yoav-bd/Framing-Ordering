@@ -828,15 +828,21 @@ textarea::selection{
 }
 
 #customSizeButton {
-    padding: 10px 20px;
+    width: 80px; /* Match the width of the input fields */
+    height: 50px; /* Match the height of the input fields */
     font-size: 16px;
     font-weight: bold;
     font-family: "SctoGroteskA", sans-serif;
     background-color: #000;
     color: #FCFAF5;
-    border: none;
+    border: 2px solid #000000; /* Ensure border matches input fields */
+    border-radius: 0;
     cursor: pointer;
     margin-left: 10px; /* Space between input and button */
+}
+
+:lang(he) #customSizeButton {
+    margin-right: 10px; /* Space between input and button for RTL */
 }
 
 #customSizeButton:hover {

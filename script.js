@@ -187,25 +187,33 @@ document.getElementById('paperType').addEventListener('change', () => {
 document.getElementById('printSize').addEventListener('change', () => {
     resetOptions('printSize');
     const productType = document.getElementById('productType').value;
-    
-    if (productType === 'Print Only') {
-        document.getElementById('quantityOptions').classList.remove('hidden');
-    } else if (productType === 'Print + Mount') {
-        document.getElementById('mountOptions').classList.remove('hidden');
-    } else if (productType === 'Print + Frame') {
-        document.getElementById('frameOptions').classList.remove('hidden');
-    } else if(productType === 'Frame Only'){
-        document.getElementById('frameOptions').classList.remove('hidden');
-        populateFrameType();
-    }
-    populateMountTypes();
+    const printSize = document.getElementById('printSize').value;
+    const customSizeOption = document.documentElement.lang === 'he' ? 'מותאם אישית' : 'Custom';
 
     // Show custom size inputs when "Select a Custom Size" is chosen
-    if (document.getElementById('printSize').value === 'Custom') {
+    if (printSize === customSizeOption) {
         document.getElementById('customSizeOptions').classList.remove('hidden');
+        document.getElementById('mountOptions').classList.add('hidden');
+        document.getElementById('frameOptions').classList.add('hidden');
+        document.getElementById('quantityOptions').classList.add('hidden');
+        document.getElementById('addonOptions').classList.add('hidden');
+        document.getElementById('frameDetails').classList.add('hidden');
     } else {
         document.getElementById('customSizeOptions').classList.add('hidden');
+        
+        if (productType === 'Print Only') {
+            document.getElementById('quantityOptions').classList.remove('hidden');
+        } else if (productType === 'Print + Mount') {
+            document.getElementById('mountOptions').classList.remove('hidden');
+        } else if (productType === 'Print + Frame') {
+            document.getElementById('frameOptions').classList.remove('hidden');
+        } else if(productType === 'Frame Only'){
+            document.getElementById('frameOptions').classList.remove('hidden');
+            populateFrameType();
+        }
+        populateMountTypes();
     }
+
     updateSummary();
 });
 
@@ -251,11 +259,11 @@ document.querySelectorAll('#addonOptions input[type="checkbox"]').forEach(option
 
 function resetOptions(changedElement) {
     const elementsToReset = {
-        'productType': ['paperTypeOptions', 'printSizeOptions', 'mountOptions', 'frameOptions', 'quantityOptions', 'frameDetails', 'addonOptions', 'diasecTypeOptions'],
-        'paperType': ['printSizeOptions', 'mountOptions', 'frameOptions', 'quantityOptions', 'frameDetails', 'addonOptions', 'diasecTypeOptions'],
-        'printSize': ['mountOptions', 'frameOptions', 'quantityOptions', 'frameDetails', 'addonOptions', 'diasecTypeOptions'],
-        'frameType': ['mountOptions', 'quantityOptions', 'frameDetails', 'addonOptions', 'diasecTypeOptions'],
-        'mountType': ['quantityOptions', 'addonOptions', 'diasecTypeOptions'],
+        'productType': ['paperTypeOptions', 'printSizeOptions', 'mountOptions', 'frameOptions', 'quantityOptions', 'frameDetails', 'addonOptions', 'diasecTypeOptions', 'customSizeOptions'],
+        'paperType': ['printSizeOptions', 'mountOptions', 'frameOptions', 'quantityOptions', 'frameDetails', 'addonOptions', 'diasecTypeOptions', 'customSizeOptions'],
+        'printSize': ['mountOptions', 'frameOptions', 'quantityOptions', 'frameDetails', 'addonOptions', 'diasecTypeOptions', 'customSizeOptions'],
+        'frameType': ['mountOptions', 'quantityOptions', 'frameDetails', 'addonOptions', 'diasecTypeOptions', 'customSizeOptions'],
+        'mountType': ['quantityOptions', 'addonOptions', 'diasecTypeOptions', 'customSizeOptions'],
     };
 
     if (changedElement in elementsToReset) {
@@ -313,6 +321,8 @@ function resetOptions(changedElement) {
 
 
 
+
+
 function toggleLanguage() {
     const currentLang = document.documentElement.lang;
     if (currentLang === 'en') {
@@ -336,6 +346,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.total-cost-label').textContent = 'עלות כוללת:';
         document.getElementById('totalCost').textContent = '0 ₪';
         document.querySelector('.footnote p').innerHTML = 'המחירים המפורטים הם עבור גדלים סטנדרטיים. לקבלת הצעת מחיר עבור גדלים מותאמים אישית, אנא צרו איתנו קשר. <span style="color:black; font-weight:bold;">מינימום הזמנה של 750 ש"ח.</span>';
+        document.getElementById('customWidth').placeholder = 'רוחב';
+        document.getElementById('customHeight').placeholder = 'גובה';
+        document.getElementById('customSizeButton').textContent = 'OK';
         translateToHebrew();
     } else {
         document.body.classList.remove('rtl');
@@ -344,6 +357,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.total-cost-label').textContent = 'Total Cost:';
         document.getElementById('totalCost').textContent = '0 NIS';
         document.querySelector('.footnote p').innerHTML = 'Prices listed are for standard sizes. For custom sizes, please contact us for a quote. <span style="color:black;">Minimum order of 750 NIS.</span>';
+        document.getElementById('customWidth').placeholder = 'Width';
+        document.getElementById('customHeight').placeholder = 'Height';
+        document.getElementById('customSizeButton').textContent = 'OK';
         translateToEnglish();
     }
     updateInputImages(); // Ensure background images switch sides
@@ -637,17 +653,23 @@ function addCustomSizeToTables(customWidth, customHeight) {
 
 
 
-document.getElementById('addCustomSize').addEventListener('click', () => {
+document.getElementById('customSizeButton').addEventListener('click', () => {
     const customWidth = parseFloat(document.getElementById('customWidth').value);
     const customHeight = parseFloat(document.getElementById('customHeight').value);
-    if (customWidth > 0 && customHeight > 0) {
-        addCustomSizeToTables(customWidth, customHeight);
-    }
-    populatePrintSizes();
-    populateFrameType();
-    populateMountTypes();
-});
+    const printSizeSelect = document.getElementById('printSize');
+    const minSize = 10;
+    const minArea = 600;
 
+    if (customWidth >= minSize && customHeight >= minSize && (customWidth * customHeight) >= minArea) {
+        addCustomSizeToTables(customWidth, customHeight);
+        populatePrintSizes();  // Ensure the custom size is added to the dropdown
+        printSizeSelect.value = `${customWidth}x${customHeight}`;  // Set the custom size value
+        printSizeSelect.dispatchEvent(new Event('change'));  // Trigger change event to update the UI
+        updateSummary();
+    } else {
+        alert(`Please ensure the dimensions are at least ${minSize}x${minSize} and the area is at least ${minArea}.`);
+    }
+});
 
 function showOptions() {
     const productType = document.getElementById('productType').value;
@@ -694,7 +716,6 @@ function showOptions() {
 
 
 
-
 function populatePrintSizes() {
     const productType = document.getElementById('productType').value;
     const paperType = document.getElementById('paperType').value;
@@ -723,7 +744,7 @@ function populatePrintSizes() {
         }
     }
 
-    printSizeSelect.innerHTML += `<option value="Custom">${lang === 'he' ? 'בחר גודל מותאם אישית' : 'Select a Custom Size'}</option>`;
+    printSizeSelect.innerHTML += `<option value="${lang === 'he' ? 'מותאם אישית' : 'Custom'}">${lang === 'he' ? 'בחר גודל מותאם אישית' : 'Select a Custom Size'}</option>`;
     document.getElementById('printSizeOptions').classList.remove('hidden');
     updateSummary();
 }
@@ -1048,42 +1069,42 @@ function updateSummary() {
                 createSummaryLine(lang === 'he' ? element.label.he : element.label.en, translatedValue, price);
             }
             
-            totalCost += price * quantity;
+            totalCost += (price || 0) * quantity;
         }
     });
 
     // Calculate total cost dynamically
     if (productType === 'Print Only' && paperType && printSize) {
-        totalCost = priceTable[paperType][printSize] * quantity;
+        totalCost = (priceTable[paperType][printSize] || 0) * quantity;
     } else if (productType === 'Print + Mount') {
         if (mountType === 'Dibond' && printSize) {
-            totalCost = (dibondPriceTable[printSize] + priceTable[paperType][printSize]) * quantity;
+            totalCost = ((dibondPriceTable[printSize] || 0) + (priceTable[paperType][printSize] || 0)) * quantity;
         } else if (mountType === 'Diasec' && diasecType && printSize) {
-            totalCost = diasecPriceTable[printSize][diasecType] * quantity;
+            totalCost = (diasecPriceTable[printSize][diasecType] || 0) * quantity;
         } else if (mountType.startsWith('KAPA') && printSize) {
-            totalCost = (kapaPriceTable[printSize][mountType] + priceTable[paperType][printSize]) * quantity;
+            totalCost = ((kapaPriceTable[printSize][mountType] || 0) + (priceTable[paperType][printSize] || 0)) * quantity;
         }
     } else if (productType === 'Print + Frame' && paperType && printSize) {
         let frameCost = 0;
         document.querySelectorAll('#frameDetails input[type="radio"]:checked').forEach(option => {
-            frameCost += parseInt(option.dataset.price);
+            frameCost += parseInt(option.dataset.price) || 0;
         });
 
-        totalCost = priceTable[paperType][printSize] * quantity + frameCost * quantity;
-        if(mountType === 'Diasec' && !diasecType){
-            totalCost -= priceTable[paperType][printSize] * quantity;
+        totalCost = (priceTable[paperType][printSize] || 0) * quantity + frameCost * quantity;
+        if (mountType === 'Diasec' && !diasecType) {
+            totalCost -= (priceTable[paperType][printSize] || 0) * quantity;
         }
         if (mountType === 'Diasec' && diasecType) {
-            totalCost += diasecPriceTable[printSize][diasecType] * quantity -priceTable[paperType][printSize]  * quantity;
+            totalCost += (diasecPriceTable[printSize][diasecType] || 0) * quantity - (priceTable[paperType][printSize] || 0) * quantity;
         } else if (mountType === 'Dibond') {
-            totalCost += dibondNoBackFramePriceTable[printSize] * quantity;
+            totalCost += (dibondNoBackFramePriceTable[printSize] || 0) * quantity;
         } else if (mountType.startsWith('KAPA')) {
-            totalCost += kapaPriceTable[printSize][mountType] * quantity;
+            totalCost += (kapaPriceTable[printSize][mountType] || 0) * quantity;
         }
     } else if (productType === 'Frame Only' && printSize) {
         let frameCost = 0;
         document.querySelectorAll('#frameDetails input[type="radio"]:checked').forEach(option => {
-            frameCost += parseInt(option.dataset.price);
+            frameCost += parseInt(option.dataset.price) || 0;
         });
         totalCost = frameCost * quantity;
     }
@@ -1092,7 +1113,7 @@ function updateSummary() {
     const upgrades = document.querySelectorAll('#addonOptions input[type="checkbox"]:checked');
     upgrades.forEach(upgrade => {
         const value = upgrade.nextElementSibling.textContent.split(' - ')[0]; // Get only the text part without price
-        const price = parseInt(upgrade.dataset.price);
+        const price = parseInt(upgrade.dataset.price) || 0;
         createSummaryLine(lang === 'he' ? 'שדרוג' : 'Upgrade', value, price);
         totalCost += price * quantity;
     });
@@ -1105,18 +1126,11 @@ function updateSummary() {
     // Update existing total cost element
     document.getElementById('totalCost').textContent = `${totalCost} ${lang === 'he' ? '₪' : 'NIS'}`;
 }
-
 // Call the function to update the summary initially
 updateSummary();
 
 
 
-
-
-
-
-// Call the function to update the summary initially
-updateSummary();
 
 
 
