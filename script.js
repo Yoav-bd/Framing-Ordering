@@ -659,13 +659,22 @@ document.getElementById('customSizeButton').addEventListener('click', () => {
     const printSizeSelect = document.getElementById('printSize');
     const minSize = 10;
     const minArea = 600;
+    const maxWidth = 180;
+    const maxHeight = 120;
 
     if (customWidth >= minSize && customHeight >= minSize && (customWidth * customHeight) >= minArea) {
-        addCustomSizeToTables(customWidth, customHeight);
-        populatePrintSizes();  // Ensure the custom size is added to the dropdown
-        printSizeSelect.value = `${customWidth}x${customHeight}`;  // Set the custom size value
-        printSizeSelect.dispatchEvent(new Event('change'));  // Trigger change event to update the UI
-        updateSummary();
+        if ((customWidth* customHeight) > (maxWidth * maxHeight)) {
+            const message = getLanguage() === 'he' 
+                ? `למידות גדולות יש ליצור איתנו קשר`
+                : `For large sizes, please contact us`;
+            showPopup(message);
+        } else {
+            addCustomSizeToTables(customWidth, customHeight);
+            populatePrintSizes();  // Ensure the custom size is added to the dropdown
+            printSizeSelect.value = `${customWidth}x${customHeight}`;  // Set the custom size value
+            printSizeSelect.dispatchEvent(new Event('change'));  // Trigger change event to update the UI
+            updateSummary();
+        }
     } else {
         const message = getLanguage() === 'he' 
             ? `אנא ודא שהמידות הן לפחות ${minSize}x${minSize} והשטח הוא לפחות ${minArea} סמ"ר.`
