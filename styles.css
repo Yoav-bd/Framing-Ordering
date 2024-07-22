@@ -856,6 +856,18 @@ textarea::selection{
 }
 
 
+@media (max-width: 600px){
+    #customSizeFields input{
+        width: 50px; /* Ensure the inputs are square */
+        padding: 15px;
+    }
+    #customSizeButton{
+        width: 75px; /* Match the width of the input fields */
+        height: 50px;
+    }
+
+}
+
 /* Custom popup styles */
 .custom-popup {
     display: none; /* Hidden by default */
