@@ -863,7 +863,7 @@ textarea::selection{
     }
     #customSizeButton{
         width: 75px; /* Match the width of the input fields */
-        height: 50px;
+        height: 52px;
     }
 
 }
