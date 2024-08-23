@@ -910,6 +910,7 @@ function populateFrameType() {
             <option value="Light Box(Includes Printing)">${lang === 'he' ? translations['Light Box(Includes Printing)'] : 'Light Box(Includes Printing)'}</option>
             <option value="Stretcher Frame">${lang === 'he' ? translations['Stretcher Frame'] : 'Stretcher Frame'}</option>
             <option value="Box Frame for Originals">${lang === 'he' ? translations['Box Frame for Originals'] : 'Box Frame for Originals'}</option>
+            <option value="Aluminium Frame">${lang === 'he' ? translations['Aluminium Frame'] : 'Aluminium Frame'}</option>
         `;
     } else if (productType === 'Print + Frame') {
         frameTypeSelect.innerHTML += `
@@ -932,6 +933,7 @@ function populateFrameType() {
 
 
 function showFrameOptions() {
+    const productType = document.getElementById('productType').value;
     const frameType = document.getElementById('frameType').value;
     const frameDetails = document.getElementById('frameDetails');
     const printSize = document.getElementById('printSize').value;
@@ -1006,7 +1008,11 @@ function showFrameOptions() {
             if (frameType !== 'Floating Frame For Paintings' && frameType !== 'Light Box(Includes Printing)'  && frameType !== 'Stretcher Frame' && frameType !== 'Box Frame for Originals') {
                 mountOptions.classList.remove('hidden');
                 populateMountTypes();  // Ensure mount types are populated based on selected frame type
-            } else if(frameType === 'Box Frame for Originals'){
+            }if(productType === 'Frame Only' && frameType === "Aluminium Frame"){
+                mountOptions.classList.add('hidden');
+                addonOptions.classList.remove('hidden');
+                quantityOptions.classList.remove('hidden');
+            }else if(frameType === 'Box Frame for Originals'){
                 addonOptions.classList.remove('hidden');
                 quantityOptions.classList.remove('hidden');
             }
